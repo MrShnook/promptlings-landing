@@ -6,6 +6,67 @@
     <title>Promptlings — AI Education for Kids | Prompt. Build. Create.</title>
     <meta name="description" content="Teach your kids to think with AI, not just use it. Live cohort-based courses for ages 8-16+. Safety-first. Build-focused. The future starts here.">
     
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://promptlings.com/">
+    <meta property="og:title" content="Promptlings — AI Education for Kids">
+    <meta property="og:description" content="Live, small-group courses that teach kids ages 8-16+ to think with AI, create with AI, and build with AI. Safety-first. Spring 2026 launch.">
+    <meta property="og:image" content="https://promptlings.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Promptlings">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Promptlings — AI Education for Kids">
+    <meta name="twitter:description" content="Live courses teaching kids ages 8-16+ to think with AI, create with AI, and build with AI. Safety-first. Join the waitlist.">
+    <meta name="twitter:image" content="https://promptlings.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Promptlings">
+    <meta name="keywords" content="AI education for kids, kids AI course, teach kids AI, AI literacy, prompt engineering for kids, STEM education, coding for kids, AI safety for children">
+    <link rel="canonical" href="https://promptlings.com/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Promptlings",
+        "description": "Live, cohort-based AI education for kids ages 8-16+",
+        "url": "https://promptlings.com",
+        "sameAs": [],
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Explorers (Ages 8-11)",
+                "price": "149",
+                "priceCurrency": "USD",
+                "description": "6-week AI discovery course for ages 8-11"
+            },
+            {
+                "@type": "Offer",
+                "name": "Builders (Ages 12-15)",
+                "price": "229",
+                "priceCurrency": "USD",
+                "description": "8-week hands-on AI course for ages 12-15"
+            },
+            {
+                "@type": "Offer",
+                "name": "Creators (Ages 16+)",
+                "price": "299",
+                "priceCurrency": "USD",
+                "description": "10-week advanced AI development course for ages 16+"
+            }
+        ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -891,6 +952,19 @@
             text-decoration: none;
         }
 
+        /* ===== UTILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
@@ -985,8 +1059,11 @@
 </head>
 <body>
 
+    <!-- Skip to content -->
+    <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;focus:outline" onfocus="this.style.position='static';this.style.width='auto';this.style.height='auto'" onblur="this.style.position='absolute';this.style.width='1px';this.style.height='1px'">Skip to main content</a>
+
     <!-- NAV -->
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="#" class="nav-logo">
             Promptlings<span class="cursor"></span>
         </a>
@@ -994,7 +1071,8 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
+    <main id="main-content">
+    <section class="hero" aria-label="Hero">
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -1242,16 +1320,19 @@
             <span class="section-label reveal" style="color: var(--violet-light);">// join_the_waitlist</span>
             <h2 class="section-title reveal">The future is building.<br>Your kid should be too.</h2>
             <p class="section-subtitle reveal">Join the waitlist for our Spring 2026 launch. Early signups get beta pricing (up to 40% off) and first pick of cohort times.</p>
-            <form class="email-form reveal" id="waitlist-form">
-                <input type="email" class="email-input" placeholder="your@email.com" required>
-                <button type="submit" class="email-submit">Join Waitlist →</button>
+            <form class="email-form reveal" id="waitlist-form" aria-label="Join waitlist">
+                <label for="waitlist-email" class="sr-only">Email address</label>
+                <input type="email" id="waitlist-email" class="email-input" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+                <button type="submit" class="email-submit" aria-label="Join the waitlist">Join Waitlist →</button>
             </form>
             <p class="email-privacy reveal">No spam, ever. Unsubscribe anytime. We respect your inbox like we respect your kids' privacy.</p>
         </div>
     </section>
 
+    </main>
+
     <!-- FOOTER -->
-    <footer>
+    <footer role="contentinfo">
         <p style="font-family: 'Bricolage Grotesque', serif; font-size: 1.2rem; font-weight: 800; color: var(--violet); margin-bottom: 0.5rem;">Promptlings</p>
         <p>Prompt. Build. Create.</p>
         <p style="margin-top: 1rem;">© 2026 Promptlings. Made with 🧠 and ❤️</p>
