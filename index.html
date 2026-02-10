@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promptlings — AI Education for Kids | Prompt. Build. Create.</title>
+    <meta name="description" content="Teach your kids to think with AI, not just use it. Live cohort-based courses for ages 8-16+. Safety-first. Build-focused. The future starts here.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --violet: #7C3AED;
+            --violet-dark: #6D28D9;
+            --violet-light: #A78BFA;
+            --coral: #FF6B6B;
+            --coral-soft: #FFA5A5;
+            --navy: #1E1B4B;
+            --navy-mid: #312E81;
+            --cream: #FFFBF5;
+            --mint: #34D399;
+            --gold: #F59E0B;
+            --slate: #64748B;
+            --lavender: #EDE9FE;
+            --lavender-soft: #F5F3FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--navy);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== NOISE TEXTURE OVERLAY ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, .headline {
+            font-family: 'Bricolage Grotesque', serif;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 251, 245, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            font-family: 'Bricolage Grotesque', serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--violet);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--coral);
+            animation: blink 1s step-end infinite;
+            margin-left: -2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .nav-cta {
+            background: var(--violet);
+            color: white;
+            border: none;
+            padding: 0.65rem 1.5rem;
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--violet-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 70vw;
+            height: 70vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(255, 107, 107, 0.04) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 40vw;
+            height: 40vw;
+            max-width: 500px;
+            max-height: 500px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.06) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--lavender);
+            color: var(--violet);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--mint);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--violet) 0%, var(--coral) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--slate);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .btn-primary {
+            background: var(--violet);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--violet-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid rgba(30, 27, 75, 0.15);
+            padding: 0.95rem 2rem;
+            border-radius: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--violet);
+            color: var(--violet);
+            background: var(--lavender-soft);
+        }
+
+        /* Hero Visual / Illustration Area */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        .hero-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(30, 27, 75, 0.2);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--violet), var(--coral), var(--mint));
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .hero-card-dot:nth-child(1) { background: var(--coral); }
+        .hero-card-dot:nth-child(2) { background: var(--gold); }
+        .hero-card-dot:nth-child(3) { background: var(--mint); }
+
+        .hero-card-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-card-line .prompt {
+            color: var(--violet-light);
+        }
+
+        .hero-card-line .output {
+            color: var(--mint);
+        }
+
+        .hero-card-line .comment {
+            color: var(--coral-soft);
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background: var(--violet-light);
+            animation: blink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        /* Floating decorative elements */
+        .float-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-emoji:nth-child(1) { top: -10%; right: 10%; animation-delay: 0s; }
+        .float-emoji:nth-child(2) { bottom: -5%; left: 5%; animation-delay: 2s; }
+        .float-emoji:nth-child(3) { top: 20%; right: -5%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(10px) rotate(-3deg); }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--violet);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--slate);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== PROBLEM/SOLUTION ===== */
+        .problem {
+            background: var(--navy);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .problem .section-label {
+            color: var(--violet-light);
+        }
+
+        .problem .section-title {
+            color: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .problem-stat {
+            font-family: 'Bricolage Grotesque', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card:nth-child(1) .problem-stat { color: var(--coral); }
+        .problem-card:nth-child(2) .problem-stat { color: var(--violet-light); }
+        .problem-card:nth-child(3) .problem-stat { color: var(--mint); }
+
+        .problem-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* ===== HOW IT WORKS / TIERS ===== */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tier-card {
+            background: white;
+            border: 1px solid rgba(30, 27, 75, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(30, 27, 75, 0.1);
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .tier-card:nth-child(1)::before { background: var(--mint); }
+        .tier-card:nth-child(2)::before { background: var(--violet); }
+        .tier-card:nth-child(3)::before { background: var(--gold); }
+
+        .tier-mascot {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier-name {
+            font-family: 'Bricolage Grotesque', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .tier-ages {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .tier-description {
+            color: var(--slate);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tier-topics {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tier-topics li {
+            background: var(--lavender-soft);
+            color: var(--violet);
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tier-card:nth-child(1) .tier-topics li {
+            background: rgba(52, 211, 153, 0.1);
+            color: #059669;
+        }
+
+        .tier-card:nth-child(3) .tier-topics li {
+            background: rgba(245, 158, 11, 0.1);
+            color: #B45309;
+        }
+
+        .tier-price {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(30, 27, 75, 0.06);
+        }
+
+        .tier-price-amount {
+            font-family: 'Bricolage Grotesque', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .tier-price-per {
+            color: var(--slate);
+            font-size: 0.85rem;
+        }
+
+        .tier-price-original {
+            text-decoration: line-through;
+            color: var(--slate);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--coral);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+        }
+
+        /* ===== WHAT THEY'LL LEARN ===== */
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .learn-item {
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            border: 1px solid rgba(30, 27, 75, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .learn-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 27, 75, 0.08);
+        }
+
+        .learn-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .learn-item h4 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .learn-item p {
+            color: var(--slate);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== SAFETY SECTION ===== */
+        .safety {
+            background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--cream) 100%);
+        }
+
+        .safety-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .safety-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .safety-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .safety-check {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--mint);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-top: 2px;
+        }
+
+        .safety-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .safety-shield {
+            width: 280px;
+            height: 320px;
+            background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.25);
+            position: relative;
+        }
+
+        .safety-shield::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        }
+
+        .safety-shield-icon {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .safety-shield-text {
+            font-family: 'Bricolage Grotesque', serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .proof {
+            text-align: center;
+        }
+
+        .proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .proof-stat-number {
+            font-family: 'Bricolage Grotesque', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--violet);
+        }
+
+        .proof-stat-label {
+            color: var(--slate);
+            font-size: 0.9rem;
+        }
+
+        .proof-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(30, 27, 75, 0.06);
+            position: relative;
+        }
+
+        .proof-quote::before {
+            content: '"';
+            font-family: 'Bricolage Grotesque', serif;
+            font-size: 6rem;
+            color: var(--violet-light);
+            opacity: 0.3;
+            position: absolute;
+            top: -0.5rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .proof-quote p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--navy);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proof-quote-author {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--slate);
+        }
+
+        /* ===== CTA / EMAIL CAPTURE ===== */
+        .cta {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 107, 107, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(52, 211, 153, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .cta .section-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta .section-title {
+            color: white;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        .cta .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 480px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 1rem 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--violet-light);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .email-submit {
+            background: var(--coral);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .email-submit:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+        }
+
+        .email-privacy {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--slate);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--violet);
+            text-decoration: none;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .safety-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .safety-visual {
+                order: -1;
+            }
+
+            .safety-list li {
+                text-align: left;
+            }
+
+            .proof-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 4rem 1.25rem;
+            }
+
+            nav {
+                padding: 0.75rem 1.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1.25rem;
+            }
+
+            .proof-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+            Promptlings<span class="cursor"></span>
+        </a>
+        <a href="#signup" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Launching Spring 2026
+                </div>
+                <h1>Your kids will <span class="gradient-text">build with AI.</span><br>Not just learn about it.</h1>
+                <p class="hero-subtitle">Live, small-group courses that teach kids ages 8-16+ to think with AI, create with AI, and understand the technology shaping their world. Safety-first. Build-focused.</p>
+                <div class="hero-actions">
+                    <a href="#signup" class="btn-primary">
+                        Join the Waitlist →
+                    </a>
+                    <a href="#tiers" class="btn-secondary">See the Courses</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <span class="float-emoji">🚀</span>
+                <span class="float-emoji">🎨</span>
+                <span class="float-emoji">🧠</span>
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <span class="hero-card-dot"></span>
+                        <span class="hero-card-dot"></span>
+                        <span class="hero-card-dot"></span>
+                    </div>
+                    <div class="hero-card-line">
+                        <span class="prompt">&gt;</span> <span class="comment">// Week 3: AI Art Studio</span>
+                    </div>
+                    <div class="hero-card-line">
+                        <span class="prompt">&gt;</span> prompt = <span class="output">"Create a dragon made<br>&nbsp;&nbsp;of northern lights"</span>
+                    </div>
+                    <div class="hero-card-line">
+                        <span class="prompt">&gt;</span> <span class="output">✨ Generating...</span> <span class="typing-cursor"></span>
+                    </div>
+                    <div class="hero-card-line" style="margin-top: 0.5rem;">
+                        <span class="comment">// Emma, age 10, just made magic ✨</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem">
+        <div class="section-inner">
+            <span class="section-label reveal">// the_problem</span>
+            <h2 class="section-title reveal">AI is already in your child's life.<br>Are they ready?</h2>
+            <div class="problem-grid">
+                <div class="problem-card reveal">
+                    <div class="problem-stat">67%</div>
+                    <p>of parents believe AI skills are critical for their children's future careers</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-stat">0</div>
+                    <p>structured AI curricula exist in most K-12 schools today</p>
+                </div>
+                <div class="problem-card reveal">
+                    <div class="problem-stat">43%</div>
+                    <p>of parents say AI has already negatively impacted their child's schoolwork</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIERS -->
+    <section id="tiers">
+        <div class="section-inner">
+            <span class="section-label reveal">// choose_your_path</span>
+            <h2 class="section-title reveal">Three paths. One mission.</h2>
+            <p class="section-subtitle reveal">Every path ends with your child knowing how to <em>think</em> with AI — not just copy-paste from it.</p>
+            <div class="tiers-grid">
+                <div class="tier-card reveal">
+                    <span class="tier-badge">Beta Price</span>
+                    <div class="tier-mascot">🔍</div>
+                    <div class="tier-name">Explorers</div>
+                    <div class="tier-ages">Ages 8-11 · 6 weeks</div>
+                    <p class="tier-description">Discover AI through play. Create art, write stories, and learn what makes AI tick — all in a safe, supervised environment.</p>
+                    <ul class="tier-topics">
+                        <li>AI Art Studio</li>
+                        <li>Story Writing</li>
+                        <li>Prompt Basics</li>
+                        <li>AI Ethics</li>
+                    </ul>
+                    <div class="tier-price">
+                        <span class="tier-price-amount">$149</span>
+                        <span class="tier-price-original">$247</span>
+                        <br>
+                        <span class="tier-price-per">$24.83/session · 60 min each</span>
+                    </div>
+                </div>
+                <div class="tier-card reveal">
+                    <span class="tier-badge">Most Popular</span>
+                    <div class="tier-mascot">🛠️</div>
+                    <div class="tier-name">Builders</div>
+                    <div class="tier-ages">Ages 12-15 · 8 weeks</div>
+                    <p class="tier-description">Go hands-on. Build real projects with AI tools — chatbots, apps, and creative works that you actually own.</p>
+                    <ul class="tier-topics">
+                        <li>Prompt Engineering</li>
+                        <li>AI-Assisted Coding</li>
+                        <li>Chatbot Design</li>
+                        <li>Critical Thinking</li>
+                    </ul>
+                    <div class="tier-price">
+                        <span class="tier-price-amount">$229</span>
+                        <span class="tier-price-original">$347</span>
+                        <br>
+                        <span class="tier-price-per">$28.63/session · 75 min each</span>
+                    </div>
+                </div>
+                <div class="tier-card reveal">
+                    <span class="tier-badge">Advanced</span>
+                    <div class="tier-mascot">⭐</div>
+                    <div class="tier-name">Creators</div>
+                    <div class="tier-ages">Ages 16+ · 10 weeks</div>
+                    <p class="tier-description">Think like an AI native. Build a portfolio, explore ethics and philosophy, and create projects that matter.</p>
+                    <ul class="tier-topics">
+                        <li>Advanced Prompting</li>
+                        <li>AI + Business</li>
+                        <li>Portfolio Projects</li>
+                        <li>AI Philosophy</li>
+                    </ul>
+                    <div class="tier-price">
+                        <span class="tier-price-amount">$299</span>
+                        <span class="tier-price-original">$447</span>
+                        <br>
+                        <span class="tier-price-per">$29.90/session · 90 min each</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT THEY'LL LEARN -->
+    <section style="background: var(--lavender-soft);">
+        <div class="section-inner">
+            <span class="section-label reveal">// skills_unlocked</span>
+            <h2 class="section-title reveal">Not just prompting. Thinking.</h2>
+            <p class="section-subtitle reveal">Every Promptling graduates with real, demonstrable skills — not just buzzwords.</p>
+            <div class="learn-grid">
+                <div class="learn-item reveal">
+                    <span class="learn-icon">💬</span>
+                    <h4>Prompt Engineering</h4>
+                    <p>Learn to communicate clearly with AI — a skill that transfers to human communication too.</p>
+                </div>
+                <div class="learn-item reveal">
+                    <span class="learn-icon">🎨</span>
+                    <h4>AI-Powered Creation</h4>
+                    <p>Make art, music, stories, and code with AI as a creative partner, not a replacement.</p>
+                </div>
+                <div class="learn-item reveal">
+                    <span class="learn-icon">🔍</span>
+                    <h4>Critical Evaluation</h4>
+                    <p>Spot AI mistakes, biases, and hallucinations. Know when to trust AI and when to question it.</p>
+                </div>
+                <div class="learn-item reveal">
+                    <span class="learn-icon">🛡️</span>
+                    <h4>Digital Safety</h4>
+                    <p>Understand privacy, data sharing, and responsible use. Navigate AI safely and confidently.</p>
+                </div>
+                <div class="learn-item reveal">
+                    <span class="learn-icon">🧩</span>
+                    <h4>Problem Decomposition</h4>
+                    <p>Break complex problems into steps AI can help with. The real skill behind every great prompt.</p>
+                </div>
+                <div class="learn-item reveal">
+                    <span class="learn-icon">🤝</span>
+                    <h4>Human-AI Collaboration</h4>
+                    <p>Learn when AI helps and when human judgment matters more. Masters of AI, not victims of it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAFETY -->
+    <section class="safety">
+        <div class="section-inner">
+            <div class="safety-content">
+                <div>
+                    <span class="section-label reveal">// safety_first</span>
+                    <h2 class="section-title reveal">Built for parents who care about doing this right.</h2>
+                    <p class="section-subtitle reveal">We know what keeps you up at night. That's why safety isn't a feature — it's the foundation.</p>
+                    <ul class="safety-list reveal">
+                        <li>
+                            <span class="safety-check">✓</span>
+                            <span><strong>Live instructors</strong> in every session — never unsupervised AI access</span>
+                        </li>
+                        <li>
+                            <span class="safety-check">✓</span>
+                            <span><strong>COPPA compliant</strong> — strict data privacy for all ages, especially under 13</span>
+                        </li>
+                        <li>
+                            <span class="safety-check">✓</span>
+                            <span><strong>Transparent tool use</strong> — parents know exactly which AI tools are used and how</span>
+                        </li>
+                        <li>
+                            <span class="safety-check">✓</span>
+                            <span><strong>Ethics woven in</strong> — responsible AI use is taught in every lesson, not just one</span>
+                        </li>
+                        <li>
+                            <span class="safety-check">✓</span>
+                            <span><strong>Small groups (3-8 kids)</strong> — personal attention, not a lecture hall</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="safety-visual reveal">
+                    <div class="safety-shield">
+                        <span class="safety-shield-icon">🛡️</span>
+                        <span class="safety-shield-text">Safety<br>First</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="proof">
+        <div class="section-inner">
+            <span class="section-label reveal">// early_signals</span>
+            <h2 class="section-title reveal" style="margin: 0 auto 2rem; text-align: center;">The numbers speak.</h2>
+            <div class="proof-stats reveal">
+                <div>
+                    <div class="proof-stat-number">$2.1B+</div>
+                    <div class="proof-stat-label">Kids coding education market</div>
+                </div>
+                <div>
+                    <div class="proof-stat-number">15%</div>
+                    <div class="proof-stat-label">Annual growth rate</div>
+                </div>
+                <div>
+                    <div class="proof-stat-number">~0</div>
+                    <div class="proof-stat-label">Structured AI courses for kids</div>
+                </div>
+            </div>
+            <div class="proof-quote reveal">
+                <p>My daughter went from being scared of AI to showing me how to use it better. The safety-first approach made all the difference — I knew she was learning responsibly.</p>
+                <div class="proof-quote-author">— Sarah M., parent of an Explorer (age 10)</div>
+            </div>
+            <p style="color: var(--slate); font-size: 0.8rem; margin-top: 1rem; font-style: italic;">* Testimonial from beta program participant</p>
+        </div>
+    </section>
+
+    <!-- CTA / EMAIL SIGNUP -->
+    <section class="cta" id="signup">
+        <div class="section-inner">
+            <span class="section-label reveal" style="color: var(--violet-light);">// join_the_waitlist</span>
+            <h2 class="section-title reveal">The future is building.<br>Your kid should be too.</h2>
+            <p class="section-subtitle reveal">Join the waitlist for our Spring 2026 launch. Early signups get beta pricing (up to 40% off) and first pick of cohort times.</p>
+            <form class="email-form reveal" id="waitlist-form">
+                <input type="email" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="email-submit">Join Waitlist →</button>
+            </form>
+            <p class="email-privacy reveal">No spam, ever. Unsubscribe anytime. We respect your inbox like we respect your kids' privacy.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p style="font-family: 'Bricolage Grotesque', serif; font-size: 1.2rem; font-weight: 800; color: var(--violet); margin-bottom: 0.5rem;">Promptlings</p>
+        <p>Prompt. Build. Create.</p>
+        <p style="margin-top: 1rem;">© 2026 Promptlings. Made with 🧠 and ❤️</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Waitlist form
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            const btn = this.querySelector('button');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '✓ You\'re on the list!';
+            btn.style.background = '#34D399';
+            this.querySelector('input').value = '';
+            
+            // TODO: Connect to ConvertKit or email service
+            console.log('Waitlist signup:', email);
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 3000);
+        });
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(30, 27, 75, 0.06)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
