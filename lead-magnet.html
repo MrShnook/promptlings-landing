@@ -41,14 +41,22 @@
 
         .page {
             width: 8.5in;
-            min-height: 11in;
             padding: 0.75in;
             position: relative;
-            page-break-after: always;
             overflow: hidden;
         }
 
-        .page:last-child { page-break-after: avoid; }
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        /* Only force breaks on cover, safety, rules poster, and CTA */
+        .cover, .safety-page, .cta-page {
+            min-height: 11in;
+            page-break-after: always;
+            break-after: page;
+        }
 
         /* ===== COVER PAGE ===== */
         .cover {
@@ -201,6 +209,20 @@
         .safety-protip strong { color: var(--gold); }
 
         /* ===== PROJECT PAGES ===== */
+        .project-section {
+            padding: 1.5rem 0;
+            page-break-inside: avoid;
+        }
+
+        .project-section + .project-section {
+            border-top: 2px solid #E5E7EB;
+            margin-top: 0.5rem;
+        }
+
+        .step, .callout {
+            page-break-inside: avoid;
+        }
+
         .project-header {
             display: flex;
             align-items: center;
@@ -470,7 +492,7 @@
     </div>
 
     <!-- PAGE 2: INTRO -->
-    <div class="page intro">
+    <div class="page page-break intro">
         <div class="intro-wave">👋</div>
         <h2>Welcome, Parents!</h2>
         <p>You're reading this because you care about your kid's future — and that future involves AI whether we're ready or not.</p>
@@ -482,7 +504,7 @@
         <p>Let's jump in. Your kids are going to love this. 💜</p>
         <div class="page-footer">
             <span class="page-footer-brand">Promptlings</span>
-            <span>Page 2</span>
+            <span>promptlings.com</span>
         </div>
     </div>
 
@@ -532,12 +554,15 @@
         </div>
         <div class="page-footer">
             <span class="page-footer-brand">Promptlings</span>
-            <span>Page 3</span>
+            <span>promptlings.com</span>
         </div>
     </div>
 
-    <!-- PAGE 4: PROJECT 1 -->
+    <!-- PROJECTS SECTION (flows continuously) -->
     <div class="page">
+
+    <!-- PROJECT 1 -->
+    <div class="project-section">
         <div class="project-header">
             <div class="project-number">1</div>
             <h2 class="project-title">🎨 AI Art Gallery</h2>
@@ -591,14 +616,10 @@
             <div class="callout-label">🛡️ Safety Tip</div>
             If an image looks weird or inappropriate, just move on. Talk about why AI doesn't always understand what we mean.
         </div>
-        <div class="page-footer">
-            <span class="page-footer-brand">Promptlings</span>
-            <span>Page 4</span>
-        </div>
     </div>
 
-    <!-- PAGE 5: PROJECT 2 -->
-    <div class="page">
+    <!-- PROJECT 2 -->
+    <div class="project-section">
         <div class="project-header">
             <div class="project-number coral">2</div>
             <h2 class="project-title">✏️ Story Co-Writer</h2>
@@ -652,14 +673,10 @@
             <div class="callout-label">🛡️ Safety Tip</div>
             Never paste personal stories or journal entries into AI. Keep stories fictional — no real names or details.
         </div>
-        <div class="page-footer">
-            <span class="page-footer-brand">Promptlings</span>
-            <span>Page 5</span>
-        </div>
     </div>
 
-    <!-- PAGE 6: PROJECT 3 -->
-    <div class="page">
+    <!-- PROJECT 3 -->
+    <div class="project-section">
         <div class="project-header">
             <div class="project-number mint">3</div>
             <h2 class="project-title">🧠 AI Quiz Master</h2>
@@ -712,14 +729,10 @@
             <div class="callout-label">🛡️ Safety Tip</div>
             Keep quiz topics about public knowledge (science, history, pop culture) — not about real people in your life.
         </div>
-        <div class="page-footer">
-            <span class="page-footer-brand">Promptlings</span>
-            <span>Page 6</span>
-        </div>
     </div>
 
-    <!-- PAGE 7: PROJECT 4 -->
-    <div class="page">
+    <!-- PROJECT 4 -->
+    <div class="project-section">
         <div class="project-header">
             <div class="project-number gold">4</div>
             <h2 class="project-title">⚔️ Prompt Battle</h2>
@@ -775,14 +788,10 @@
             <div class="callout-label">🛡️ Safety Tip</div>
             Family rule: keep all prompts kind and appropriate. Nothing about real people, nothing mean. Disqualified if it crosses a line!
         </div>
-        <div class="page-footer">
-            <span class="page-footer-brand">Promptlings</span>
-            <span>Page 7</span>
-        </div>
     </div>
 
-    <!-- PAGE 8: PROJECT 5 -->
-    <div class="page">
+    <!-- PROJECT 5 -->
+    <div class="project-section">
         <div class="project-header">
             <div class="project-number navy">5</div>
             <h2 class="project-title">🎵 AI Music Video</h2>
@@ -833,14 +842,12 @@
             <div class="callout-label">🛡️ Safety Tip</div>
             Don't use real people's names in lyrics (especially classmates or teachers). Keep it creative and fictional.
         </div>
-        <div class="page-footer">
-            <span class="page-footer-brand">Promptlings</span>
-            <span>Page 8</span>
-        </div>
     </div>
 
-    <!-- PAGE 9: RULES POSTER -->
-    <div class="page" style="display: flex; flex-direction: column; justify-content: center;">
+    </div><!-- end projects flow section -->
+
+    <!-- RULES POSTER -->
+    <div class="page page-break" style="display: flex; flex-direction: column; justify-content: center; min-height: 11in;">
         <p style="text-align: center; color: var(--slate); margin-bottom: 0.75rem; font-size: 0.85rem;">✂️ Print this page and hang it up!</p>
         <div class="poster">
             <h2>🛡️ My 5 Rules for Using AI 🛡️</h2>
@@ -875,7 +882,7 @@
         </div>
         <div class="page-footer">
             <span class="page-footer-brand">Promptlings</span>
-            <span>Page 9</span>
+            <span>promptlings.com</span>
         </div>
     </div>
 
