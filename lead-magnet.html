@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Fun AI Projects for Kids — Promptlings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --violet: #7C3AED;
+            --violet-dark: #6D28D9;
+            --violet-light: #A78BFA;
+            --coral: #FF6B6B;
+            --navy: #1E1B4B;
+            --cream: #FFFBF5;
+            --mint: #34D399;
+            --gold: #F59E0B;
+            --slate: #64748B;
+            --lavender: #F5F3FF;
+        }
+
+        @page { size: letter; margin: 0; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            background: white;
+            font-size: 14px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bricolage Grotesque', serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        .page:last-child { page-break-after: avoid; }
+
+        /* ===== COVER PAGE ===== */
+        .cover {
+            background: var(--navy);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 25% 30%, rgba(124, 58, 237, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 75% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(52, 211, 153, 0.1) 0%, transparent 40%);
+        }
+
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-emoji { font-size: 4rem; margin-bottom: 1rem; }
+
+        .cover h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, white 0%, var(--violet-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-subtitle {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .cover-brand {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cover-tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--violet-light);
+            letter-spacing: 0.1em;
+        }
+
+        .cover-meta {
+            margin-top: 2.5rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .cover-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--violet), var(--coral), var(--mint), var(--gold));
+        }
+
+        /* ===== INTRO PAGE ===== */
+        .intro-wave {
+            color: var(--violet);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .intro .highlight {
+            background: var(--lavender);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--violet);
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+
+        /* ===== SAFETY PAGE ===== */
+        .safety-page { background: var(--lavender); }
+
+        .safety-page h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .safety-rule {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .safety-rule-icon {
+            font-size: 1.5rem;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .safety-rule h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 800;
+        }
+
+        .safety-rule p {
+            font-size: 0.9rem;
+            color: var(--slate);
+            line-height: 1.5;
+        }
+
+        .safety-protip {
+            background: var(--navy);
+            color: white;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .safety-protip strong { color: var(--gold); }
+
+        /* ===== PROJECT PAGES ===== */
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-number {
+            background: var(--violet);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bricolage Grotesque', serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .project-number.coral { background: var(--coral); }
+        .project-number.mint { background: #059669; }
+        .project-number.gold { background: #B45309; }
+        .project-number.navy { background: var(--navy); }
+
+        .project-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .project-subtitle {
+            font-style: italic;
+            color: var(--slate);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--slate);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .step {
+            margin-bottom: 0.75rem;
+        }
+
+        .step h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            color: var(--navy);
+        }
+
+        .step p, .step ul {
+            font-size: 0.88rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .step ul {
+            margin-left: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .prompt-example {
+            background: var(--navy);
+            color: var(--mint);
+            padding: 0.6rem 0.85rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            margin: 0.4rem 0;
+            line-height: 1.5;
+        }
+
+        .callout {
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            margin: 0.75rem 0;
+            font-size: 0.88rem;
+        }
+
+        .callout-levelup {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-left: 4px solid var(--gold);
+        }
+
+        .callout-talk {
+            background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+            border-left: 4px solid var(--violet);
+        }
+
+        .callout-safety {
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            border-left: 4px solid var(--mint);
+        }
+
+        .callout-label {
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .callout-levelup .callout-label { color: #92400E; }
+        .callout-talk .callout-label { color: var(--violet-dark); }
+        .callout-safety .callout-label { color: #065F46; }
+
+        /* ===== RULES POSTER ===== */
+        .poster {
+            background: white;
+            border: 3px dashed var(--violet);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .poster h2 {
+            font-size: 1.8rem;
+            color: var(--violet);
+            margin-bottom: 1rem;
+        }
+
+        .poster-rule {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 0.95rem;
+        }
+
+        .poster-rule:last-of-type { border-bottom: none; }
+
+        .poster-rule .num {
+            font-family: 'Bricolage Grotesque', serif;
+            font-weight: 800;
+            color: var(--violet);
+            font-size: 1.2rem;
+        }
+
+        .poster-sign {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--slate);
+        }
+
+        .poster-sign .line {
+            border-bottom: 1px solid var(--navy);
+            display: inline-block;
+            width: 200px;
+            margin-left: 0.5rem;
+        }
+
+        /* ===== CTA PAGE ===== */
+        .cta-page {
+            background: var(--navy);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cta-page h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .cta-page .lead {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .cta-feature {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .cta-feature-icon {
+            font-size: 1.5rem;
+            min-width: 2rem;
+        }
+
+        .cta-feature h4 {
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 0.15rem;
+        }
+
+        .cta-feature p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--coral);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .cta-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* Page footer */
+        .page-footer {
+            position: absolute;
+            bottom: 0.5in;
+            left: 0.75in;
+            right: 0.75in;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--slate);
+            border-top: 1px solid #E5E7EB;
+            padding-top: 0.5rem;
+        }
+
+        .page-footer-brand { color: var(--violet); font-weight: 600; }
+
+        @media print {
+            .page { page-break-after: always; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page cover">
+        <div class="cover-content">
+            <div class="cover-emoji">🚀</div>
+            <h1>5 Fun AI Projects<br>for Kids</h1>
+            <div class="cover-subtitle">That the Whole Family Can Do Together</div>
+            <div class="cover-brand">A Free Guide for Parents & Kids</div>
+            <div class="cover-tagline">PROMPT. BUILD. CREATE.</div>
+            <div class="cover-meta">For ages 8–16 · No experience needed · All free tools</div>
+        </div>
+        <div class="cover-stripe"></div>
+    </div>
+
+    <!-- PAGE 2: INTRO -->
+    <div class="page intro">
+        <div class="intro-wave">👋</div>
+        <h2>Welcome, Parents!</h2>
+        <p>You're reading this because you care about your kid's future — and that future involves AI whether we're ready or not.</p>
+        <p>Here's the good news: <strong>AI literacy isn't about turning your child into a programmer.</strong> It's about giving them the confidence to use powerful tools thoughtfully, creatively, and safely. Just like we teach kids to swim before taking them to the ocean, we can teach them to navigate AI before the world hands it to them with no instructions.</p>
+        <p>The five projects in this guide are designed for families to do <strong>together.</strong> They're not homework. They're not screen-time guilt trips. They're genuinely fun activities that happen to teach your kid some of the most important skills of the next decade.</p>
+        <div class="highlight">
+            <strong>You don't need to be a tech expert.</strong> If you can type a sentence, you can do every project in this guide. Each takes 15–45 minutes, uses only free tools, and ends with a conversation starter so your family can talk about what AI means — not just what it does.
+        </div>
+        <p>Let's jump in. Your kids are going to love this. 💜</p>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 2</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: SAFETY -->
+    <div class="page safety-page">
+        <h2>🛡️ Safety First: Ground Rules</h2>
+        <p style="margin-bottom: 1rem; color: var(--slate);">Before you dive in, go over these ground rules together. Read them out loud as a family!</p>
+
+        <div class="safety-rule">
+            <div class="safety-rule-icon">🔒</div>
+            <div>
+                <h4>Protect Your Privacy</h4>
+                <p>Never type your real name, address, phone number, school name, or photos into any AI tool. Use a fun nickname instead!</p>
+            </div>
+        </div>
+        <div class="safety-rule">
+            <div class="safety-rule-icon">👀</div>
+            <div>
+                <h4>Always Have a Grown-Up Nearby</h4>
+                <p>These projects are designed for kids and parents together. AI can produce unexpected results — having a parent around means you can talk about anything confusing right away.</p>
+            </div>
+        </div>
+        <div class="safety-rule">
+            <div class="safety-rule-icon">🤥</div>
+            <div>
+                <h4>AI Makes Stuff Up (Confidently!)</h4>
+                <p>AI predicts words based on patterns — it doesn't "know" things like people do. Always double-check facts. This superpower makes you better at fact-checking <em>everything.</em></p>
+            </div>
+        </div>
+        <div class="safety-rule">
+            <div class="safety-rule-icon">✋</div>
+            <div>
+                <h4>AI Is a Tool, Not a Replacement</h4>
+                <p>Your kid is the creator. AI is the assistant. "I used AI to help me make this" — not "AI made this for me."</p>
+            </div>
+        </div>
+        <div class="safety-rule">
+            <div class="safety-rule-icon">💬</div>
+            <div>
+                <h4>The #1 Rule: Talk About It</h4>
+                <p>If something feels weird, confusing, or too good to be true — say so! There are no dumb questions about AI.</p>
+            </div>
+        </div>
+
+        <div class="safety-protip">
+            <strong>🎯 Pro tip:</strong> Bookmark this page. Come back to these rules before every project session. They'll become second nature fast.
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 3</span>
+        </div>
+    </div>
+
+    <!-- PAGE 4: PROJECT 1 -->
+    <div class="page">
+        <div class="project-header">
+            <div class="project-number">1</div>
+            <h2 class="project-title">🎨 AI Art Gallery</h2>
+        </div>
+        <div class="project-subtitle">Create a themed art gallery and host a family exhibition!</div>
+        <div class="project-meta">
+            <span>👶 Ages 8+</span>
+            <span>⏱️ 30–45 min</span>
+            <span>🛠️ Copilot or Craiyon (free)</span>
+        </div>
+
+        <div class="step">
+            <h4>Step 1: Pick Your Gallery Theme 🎭</h4>
+            <p>Brainstorm together! Ideas: "Underwater Cities," "Animals Running Coffee Shops," "Dream Bedroom on Mars," "Dinosaurs with Jobs"</p>
+        </div>
+        <div class="step">
+            <h4>Step 2: Open Your AI Art Tool 🖥️</h4>
+            <p>Go to <strong>Craiyon.com</strong> (no account!) or <strong>Microsoft Copilot</strong> (free with Microsoft account).</p>
+        </div>
+        <div class="step">
+            <h4>Step 3: Write Your First Prompt ✍️</h4>
+            <p>Be specific! Include subject + style + details + mood:</p>
+            <div class="prompt-example">"A friendly orange tabby cat wearing a tiny chef hat, making pancakes in a sunny kitchen, cartoon style"</div>
+        </div>
+        <div class="step">
+            <h4>Step 4: Experiment! 🔄</h4>
+            <p>Try adding colors, moods, styles ("watercolor," "pixel art," "cartoon"). Generate 6-8 images for variety.</p>
+        </div>
+        <div class="step">
+            <h4>Step 5: Curate Your Gallery 🖼️</h4>
+            <p>Pick your <strong>5 best pieces</strong>. Real curators don't show everything — they choose what goes best together.</p>
+        </div>
+        <div class="step">
+            <h4>Step 6: Title Each Piece 📝</h4>
+            <p>Give each image a creative title and one sentence about why you chose it. Real art has artist statements!</p>
+        </div>
+        <div class="step">
+            <h4>Step 7: Host Your Exhibition! 🎉</h4>
+            <p>Display the images and walk the family through your gallery. You're the curator!</p>
+        </div>
+
+        <div class="callout callout-levelup">
+            <div class="callout-label">🚀 Level Up</div>
+            Create a 3-image series that tells a story (beginning, middle, end).
+        </div>
+        <div class="callout callout-talk">
+            <div class="callout-label">💬 Talk About It</div>
+            "AI made the images, but you chose everything else. Who's the artist — you or the AI?"
+        </div>
+        <div class="callout callout-safety">
+            <div class="callout-label">🛡️ Safety Tip</div>
+            If an image looks weird or inappropriate, just move on. Talk about why AI doesn't always understand what we mean.
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 4</span>
+        </div>
+    </div>
+
+    <!-- PAGE 5: PROJECT 2 -->
+    <div class="page">
+        <div class="project-header">
+            <div class="project-number coral">2</div>
+            <h2 class="project-title">✏️ Story Co-Writer</h2>
+        </div>
+        <div class="project-subtitle">Write a short story WITH AI — not BY AI!</div>
+        <div class="project-meta">
+            <span>👶 Ages 8+</span>
+            <span>⏱️ 30–45 min</span>
+            <span>🛠️ ChatGPT or Copilot (free)</span>
+        </div>
+
+        <div class="step">
+            <h4>Step 1: Choose Your Story Ingredients 🧪</h4>
+            <p>Fill in BEFORE touching AI: Main character + Setting + Problem + Mood</p>
+            <div class="prompt-example">Example: "Luna, 11, talks to birds — floating city above clouds — city is sinking — adventurous"</div>
+        </div>
+        <div class="step">
+            <h4>Step 2: Get Starter Ideas 💡</h4>
+            <div class="prompt-example">"I'm writing a story about [your ingredients]. Give me 3 different opening ideas. Keep each to 2-3 sentences."</div>
+        </div>
+        <div class="step">
+            <h4>Step 3: Write the First Paragraph Yourself ✍️</h4>
+            <p><strong>Your kid writes the opening in their own words.</strong> Use AI's idea as inspiration, not a copy source.</p>
+        </div>
+        <div class="step">
+            <h4>Step 4: Use AI to Get Unstuck 🤔</h4>
+            <div class="prompt-example">"My character just found the engine room flooded. Give me 3 ideas for what she discovers there."</div>
+        </div>
+        <div class="step">
+            <h4>Step 5: Alternate: Write → Ask → Write ✏️➡️🤖➡️✏️</h4>
+            <p>Kid writes a section, asks AI for ideas when stuck, picks what they like, writes more. Aim for 250-400 words.</p>
+        </div>
+        <div class="step">
+            <h4>Step 6: AI Editor 📋</h4>
+            <div class="prompt-example">"What's the strongest part of my story? What's one thing I could make clearer? Don't rewrite — just give feedback."</div>
+        </div>
+        <div class="step">
+            <h4>Step 7: Read Aloud! 📖</h4>
+            <p>Revise based on feedback they agree with, then read to the family. Applause mandatory. 👏</p>
+        </div>
+
+        <div class="callout callout-levelup">
+            <div class="callout-label">🚀 Level Up</div>
+            Try a "chain story" — alternate paragraphs with AI. See if family can tell who wrote which!
+        </div>
+        <div class="callout callout-talk">
+            <div class="callout-label">💬 Talk About It</div>
+            "You used AI for ideas but made the choices. How is this different from AI writing the whole thing?"
+        </div>
+        <div class="callout callout-safety">
+            <div class="callout-label">🛡️ Safety Tip</div>
+            Never paste personal stories or journal entries into AI. Keep stories fictional — no real names or details.
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 5</span>
+        </div>
+    </div>
+
+    <!-- PAGE 6: PROJECT 3 -->
+    <div class="page">
+        <div class="project-header">
+            <div class="project-number mint">3</div>
+            <h2 class="project-title">🧠 AI Quiz Master</h2>
+        </div>
+        <div class="project-subtitle">Build a custom quiz game and stump your whole family!</div>
+        <div class="project-meta">
+            <span>👶 Ages 10+</span>
+            <span>⏱️ 30–45 min</span>
+            <span>🛠️ ChatGPT or Copilot (free)</span>
+        </div>
+
+        <div class="step">
+            <h4>Step 1: Choose Quiz Categories 📚</h4>
+            <p>Pick 3-5 topics: Animals 🐍, Movies 🎬, Space 🚀, Sports ⚽, Weird History 🏛️, World Food 🍕</p>
+        </div>
+        <div class="step">
+            <h4>Step 2: Generate Questions 🤖</h4>
+            <div class="prompt-example">"Create 5 multiple-choice trivia questions about [CATEGORY]. Make 2 easy (ages 8+), 2 medium (ages 12+), 1 hard (challenge adults). Include fun facts."</div>
+        </div>
+        <div class="step">
+            <h4>Step 3: Fact-Check! 🔍 (Most Important Step!)</h4>
+            <p><strong>AI gets facts wrong.</strong> Look up at least 3 answers. Track mistakes you catch — that's awesome learning!</p>
+        </div>
+        <div class="step">
+            <h4>Step 4: Create Scoring 🏆</h4>
+            <p>Easy = 1pt, Medium = 2pts, Hard = 3pts. Add a wager round for the finale!</p>
+        </div>
+        <div class="step">
+            <h4>Step 5: Build Your Answer Sheet 📋</h4>
+            <p>Organize questions by round (one per category). The quiz master needs to know the answers!</p>
+        </div>
+        <div class="step">
+            <h4>Step 6: Host Quiz Night! 🎙️</h4>
+            <p>Kid stands at the front, reads questions dramatically, keeps score. Ham it up!</p>
+        </div>
+        <div class="step">
+            <h4>Step 7: Award Ceremony 🥇</h4>
+            <div class="prompt-example">"Create 5 funny, kind quiz awards like 'Fastest Buzzer Brain' or 'Most Creative Wrong Answer.'"</div>
+        </div>
+
+        <div class="callout callout-levelup">
+            <div class="callout-label">🚀 Level Up</div>
+            Create a "Personalized Round" with questions about your family's specific interests!
+        </div>
+        <div class="callout callout-talk">
+            <div class="callout-label">💬 Talk About It</div>
+            "You found wrong answers by fact-checking. Where else in life should we double-check what we hear?"
+        </div>
+        <div class="callout callout-safety">
+            <div class="callout-label">🛡️ Safety Tip</div>
+            Keep quiz topics about public knowledge (science, history, pop culture) — not about real people in your life.
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 6</span>
+        </div>
+    </div>
+
+    <!-- PAGE 7: PROJECT 4 -->
+    <div class="page">
+        <div class="project-header">
+            <div class="project-number gold">4</div>
+            <h2 class="project-title">⚔️ Prompt Battle</h2>
+        </div>
+        <div class="project-subtitle">Who in your family can write the best AI prompt? Game on!</div>
+        <div class="project-meta">
+            <span>👶 Ages 8+</span>
+            <span>⏱️ 20–30 min</span>
+            <span>🛠️ Craiyon or ChatGPT (free)</span>
+        </div>
+
+        <div class="step">
+            <h4>Step 1: Pick a Judge 👨‍⚖️</h4>
+            <p>One judge, or everyone votes (can't vote for yourself). Both work great!</p>
+        </div>
+        <div class="step">
+            <h4>Step 2: Choose Your Battle Format 🎯</h4>
+            <p><strong>Image Battle:</strong> Best AI-generated image wins. <strong>Text Battle:</strong> Funniest/most creative AI response wins.</p>
+        </div>
+        <div class="step">
+            <h4>Step 3: Announce the Challenge! 📢</h4>
+            <p><strong>Image:</strong> "Cutest animal doing something unexpected" · "Design your dream treehouse" · "Alien's living room"</p>
+            <p><strong>Text:</strong> "Funniest knock-knock joke" · "Explain gravity to a confused penguin" · "Rap about doing dishes"</p>
+        </div>
+        <div class="step">
+            <h4>Step 4: Write in Secret! 🤫</h4>
+            <p>5 minutes. No peeking. Kids and adults play by the same rules!</p>
+        </div>
+        <div class="step">
+            <h4>Step 5: Reveal & Vote! 🎬👑</h4>
+            <p>Take turns submitting prompts while everyone watches. Vote for your favorite. Winner picks the next challenge!</p>
+        </div>
+
+        <div style="background: var(--lavender); border-radius: 12px; padding: 0.85rem 1rem; margin: 0.75rem 0;">
+            <strong style="font-size: 0.9rem;">Pro tips for better prompts:</strong>
+            <ul style="font-size: 0.85rem; margin-left: 1rem; margin-top: 0.25rem; color: #374151;">
+                <li><strong>Be specific:</strong> "happy golden retriever puppy" beats "a dog"</li>
+                <li><strong>Add style:</strong> "watercolor painting" or "as a cartoon"</li>
+                <li><strong>Set the scene:</strong> "sitting on a cloud reading a tiny book"</li>
+                <li><strong>Add mood:</strong> "cozy and warm" or "dramatic and epic"</li>
+            </ul>
+        </div>
+
+        <div class="callout callout-levelup">
+            <div class="callout-label">🚀 Level Up</div>
+            Telephone Prompt: Player 1 generates an image. Player 2 sees ONLY the image and writes a prompt to recreate it!
+        </div>
+        <div class="callout callout-talk">
+            <div class="callout-label">💬 Talk About It</div>
+            "Why did some prompts work better? Is writing a good prompt a skill? What other skills is it like?"
+        </div>
+        <div class="callout callout-safety">
+            <div class="callout-label">🛡️ Safety Tip</div>
+            Family rule: keep all prompts kind and appropriate. Nothing about real people, nothing mean. Disqualified if it crosses a line!
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 7</span>
+        </div>
+    </div>
+
+    <!-- PAGE 8: PROJECT 5 -->
+    <div class="page">
+        <div class="project-header">
+            <div class="project-number navy">5</div>
+            <h2 class="project-title">🎵 AI Music Video</h2>
+        </div>
+        <div class="project-subtitle">Combine AI art, AI music, and storytelling into a mini music video!</div>
+        <div class="project-meta">
+            <span>👶 Ages 12+</span>
+            <span>⏱️ 45–60 min</span>
+            <span>🛠️ Suno + Craiyon + Google Slides (all free)</span>
+        </div>
+
+        <div class="step">
+            <h4>Step 1: Choose Your Song's Story 📝</h4>
+            <p>What's it about? What's the vibe? Who's the main character?</p>
+            <div class="prompt-example">Example: "A cat who dreams of going to space — upbeat and funny — named Captain Whiskers"</div>
+        </div>
+        <div class="step">
+            <h4>Step 2: Write Lyrics (with AI Help) 🎤</h4>
+            <p>Brainstorm lines first, then ask AI to help structure into verse + chorus. <strong>Your ideas first, AI helps with structure.</strong></p>
+        </div>
+        <div class="step">
+            <h4>Step 3: Generate the Music 🎶</h4>
+            <p>Go to <strong>Suno.com</strong> (free tier). Paste lyrics, choose genre, generate versions, pick your favorite.</p>
+        </div>
+        <div class="step">
+            <h4>Step 4: Create Music Video Art 🎨</h4>
+            <p>Generate 5-8 images telling your song's story scene by scene.</p>
+            <div class="prompt-example">"Captain Whiskers wearing a tiny space helmet, floating among planets, cute and adventurous"</div>
+        </div>
+        <div class="step">
+            <h4>Step 5: Build Your Video 🎬</h4>
+            <p>Use Google Slides, Canva, or CapCut. Add images as scenes, time to music (5-10 sec each).</p>
+        </div>
+        <div class="step">
+            <h4>Step 6: Premiere Night! 🍿</h4>
+            <p>Dim lights, make popcorn, introduce the video. Your living room is the film festival!</p>
+        </div>
+
+        <div class="callout callout-levelup">
+            <div class="callout-label">🚀 Level Up</div>
+            Record a "Director's Commentary" — what prompts worked, what surprised you, what you'd change.
+        </div>
+        <div class="callout callout-talk">
+            <div class="callout-label">💬 Talk About It</div>
+            "You wrote the lyrics, chose the style, picked the images, assembled the video. Is a director an artist?"
+        </div>
+        <div class="callout callout-safety">
+            <div class="callout-label">🛡️ Safety Tip</div>
+            Don't use real people's names in lyrics (especially classmates or teachers). Keep it creative and fictional.
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 8</span>
+        </div>
+    </div>
+
+    <!-- PAGE 9: RULES POSTER -->
+    <div class="page" style="display: flex; flex-direction: column; justify-content: center;">
+        <p style="text-align: center; color: var(--slate); margin-bottom: 0.75rem; font-size: 0.85rem;">✂️ Print this page and hang it up!</p>
+        <div class="poster">
+            <h2>🛡️ My 5 Rules for Using AI 🛡️</h2>
+
+            <div class="poster-rule">
+                <span class="num">1.</span> 🔒 <strong>I Protect My Privacy</strong><br>
+                <span style="font-size: 0.88rem; color: var(--slate);">I never share my real name, address, school, or photos with AI tools.</span>
+            </div>
+            <div class="poster-rule">
+                <span class="num">2.</span> 🤔 <strong>I Think Before I Trust</strong><br>
+                <span style="font-size: 0.88rem; color: var(--slate);">AI can be wrong! I always double-check important facts.</span>
+            </div>
+            <div class="poster-rule">
+                <span class="num">3.</span> ✋ <strong>I'm the Creator, Not AI</strong><br>
+                <span style="font-size: 0.88rem; color: var(--slate);">AI helps me — it doesn't replace me. I always give credit when I use AI.</span>
+            </div>
+            <div class="poster-rule">
+                <span class="num">4.</span> 💜 <strong>I Keep It Kind</strong><br>
+                <span style="font-size: 0.88rem; color: var(--slate);">I don't use AI to make fun of people or create anything I wouldn't say face-to-face.</span>
+            </div>
+            <div class="poster-rule">
+                <span class="num">5.</span> 💬 <strong>I Talk About It</strong><br>
+                <span style="font-size: 0.88rem; color: var(--slate);">If something feels weird or confusing, I talk to a grown-up. No dumb questions about AI!</span>
+            </div>
+
+            <div class="poster-sign">
+                <p>Signed: <span class="line"></span></p>
+                <p style="margin-top: 0.5rem;">Date: <span class="line"></span></p>
+            </div>
+
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--violet); font-weight: 600;">Promptlings · Prompt. Build. Create.</p>
+        </div>
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>Page 9</span>
+        </div>
+    </div>
+
+    <!-- PAGE 10: CTA -->
+    <div class="page cta-page">
+        <h2>🚀 Want to Go Deeper?</h2>
+        <p class="lead">You just completed 5 awesome projects. Imagine what your kid could do with a full course.</p>
+
+        <div class="cta-feature">
+            <div class="cta-feature-icon">🎨</div>
+            <div>
+                <h4>AI Creator Studio</h4>
+                <p>Hands-on course: AI comics, interactive stories, digital art portfolios. Goes way deeper than this guide.</p>
+            </div>
+        </div>
+        <div class="cta-feature">
+            <div class="cta-feature-icon">🧠</div>
+            <div>
+                <h4>Prompt Engineering for Kids</h4>
+                <p>From basic prompts to complex creative instructions. Yes, this is a real career skill.</p>
+            </div>
+        </div>
+        <div class="cta-feature">
+            <div class="cta-feature-icon">🛡️</div>
+            <div>
+                <h4>AI Safety & Ethics</h4>
+                <p>Privacy, bias, misinformation, responsible use. We teach kids how to THINK about AI, not just use it.</p>
+            </div>
+        </div>
+        <div class="cta-feature">
+            <div class="cta-feature-icon">👨‍👩‍👧‍👦</div>
+            <div>
+                <h4>Family Learning Mode</h4>
+                <p>Parent guides and discussion prompts in every lesson. Learn together.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://promptlings.com" class="cta-button">Join the Promptlings Waitlist →</a>
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Early supporters get founding member pricing + exclusive bonus content</p>
+        </div>
+
+        <div class="cta-footer">
+            <p><strong>Promptlings</strong> · Prompt. Build. Create. 💜</p>
+            <p style="margin-top: 0.25rem;">promptlings.com · hello@promptlings.com · @promptlings</p>
+            <p style="margin-top: 0.5rem;">© 2026 Promptlings. Free to share — please don't modify or sell.</p>
+        </div>
+    </div>
+
+</body>
+</html>
