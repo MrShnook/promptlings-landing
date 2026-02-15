@@ -209,39 +209,32 @@
         .safety-protip strong { color: var(--gold); }
 
         /* ===== PROJECT PAGES ===== */
-        .project-section {
-            padding: 1.5rem 0;
-            page-break-inside: avoid;
-        }
-
-        .project-section + .project-section {
-            border-top: 2px solid #E5E7EB;
-            margin-top: 0.5rem;
-        }
-
-        .step, .callout {
-            page-break-inside: avoid;
+        .project-page {
+            min-height: 11in;
+            max-height: 11in;
+            page-break-after: always;
+            break-after: page;
         }
 
         .project-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
+            gap: 0.75rem;
+            margin-bottom: 0.2rem;
         }
 
         .project-number {
             background: var(--violet);
             color: white;
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Bricolage Grotesque', serif;
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
         }
 
@@ -251,92 +244,100 @@
         .project-number.navy { background: var(--navy); }
 
         .project-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
         }
 
         .project-subtitle {
             font-style: italic;
             color: var(--slate);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
         }
 
         .project-meta {
             display: flex;
             gap: 1.5rem;
-            margin-bottom: 1.25rem;
-            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.8rem;
             color: var(--slate);
         }
 
         .project-meta span {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.3rem;
         }
 
         .step {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.35rem;
         }
 
         .step h4 {
-            font-size: 0.95rem;
+            font-size: 0.82rem;
             font-weight: 800;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.1rem;
             color: var(--navy);
         }
 
         .step p, .step ul {
-            font-size: 0.88rem;
+            font-size: 0.78rem;
             color: #374151;
-            line-height: 1.6;
+            line-height: 1.45;
         }
 
         .step ul {
-            margin-left: 1.25rem;
-            margin-top: 0.25rem;
+            margin-left: 1.1rem;
+            margin-top: 0.15rem;
         }
 
         .prompt-example {
             background: var(--navy);
             color: var(--mint);
-            padding: 0.6rem 0.85rem;
-            border-radius: 8px;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            margin: 0.4rem 0;
-            line-height: 1.5;
+            font-size: 0.68rem;
+            margin: 0.25rem 0;
+            line-height: 1.4;
+        }
+
+        /* Callouts in a 3-column row */
+        .callout-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .callout {
-            border-radius: 12px;
-            padding: 0.85rem 1rem;
-            margin: 0.75rem 0;
-            font-size: 0.88rem;
+            border-radius: 10px;
+            padding: 0.5rem 0.6rem;
+            font-size: 0.72rem;
+            line-height: 1.4;
+            flex: 1;
         }
 
         .callout-levelup {
             background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-            border-left: 4px solid var(--gold);
+            border-left: 3px solid var(--gold);
         }
 
         .callout-talk {
             background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
-            border-left: 4px solid var(--violet);
+            border-left: 3px solid var(--violet);
         }
 
         .callout-safety {
             background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
-            border-left: 4px solid var(--mint);
+            border-left: 3px solid var(--mint);
         }
 
         .callout-label {
             font-weight: 800;
-            font-size: 0.8rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.15rem;
         }
 
         .callout-levelup .callout-label { color: #92400E; }
@@ -558,11 +559,8 @@
         </div>
     </div>
 
-    <!-- PROJECTS SECTION (flows continuously) -->
-    <div class="page">
-
     <!-- PROJECT 1 -->
-    <div class="project-section">
+    <div class="page project-page">
         <div class="project-header">
             <div class="project-number">1</div>
             <h2 class="project-title">🎨 AI Art Gallery</h2>
@@ -580,7 +578,7 @@
         </div>
         <div class="step">
             <h4>Step 2: Open Your AI Art Tool 🖥️</h4>
-            <p>Go to <strong>Craiyon.com</strong> (no account!) or <strong>Microsoft Copilot</strong> (free with Microsoft account).</p>
+            <p>Go to <strong>Craiyon.com</strong> (no account needed!) or <strong>Microsoft Copilot</strong> (free with a Microsoft account).</p>
         </div>
         <div class="step">
             <h4>Step 3: Write Your First Prompt ✍️</h4>
@@ -588,38 +586,44 @@
             <div class="prompt-example">"A friendly orange tabby cat wearing a tiny chef hat, making pancakes in a sunny kitchen, cartoon style"</div>
         </div>
         <div class="step">
-            <h4>Step 4: Experiment! 🔄</h4>
-            <p>Try adding colors, moods, styles ("watercolor," "pixel art," "cartoon"). Generate 6-8 images for variety.</p>
+            <h4>Step 4: Experiment and Iterate! 🔄</h4>
+            <p>Try adding colors, moods, and styles ("watercolor," "pixel art," "cartoon," "realistic"). Generate <strong>at least 6–8 images</strong> to give yourself plenty to choose from.</p>
         </div>
         <div class="step">
             <h4>Step 5: Curate Your Gallery 🖼️</h4>
-            <p>Pick your <strong>5 best pieces</strong>. Real curators don't show everything — they choose what goes best together.</p>
+            <p>Pick your <strong>5 best pieces</strong>. Real curators don't show everything — they choose the ones that go best together.</p>
         </div>
         <div class="step">
             <h4>Step 6: Title Each Piece 📝</h4>
-            <p>Give each image a creative title and one sentence about why you chose it. Real art has artist statements!</p>
+            <p>Give each image a creative title (not just the prompt!) and one sentence about why you chose it. Real art has artist statements!</p>
         </div>
         <div class="step">
             <h4>Step 7: Set Up and Present Your Exhibition! 🎉</h4>
-            <p>Pick how to display: <strong>slideshow</strong> (Google Slides/Canva), <strong>printed</strong> (tape to a wall), or <strong>tablet</strong> as a digital frame. Then walk the family through your gallery — explain your creative choices and what prompts worked best. You're the curator!</p>
+            <p>Display your gallery as a <strong>slideshow</strong> (Google Slides/Canva), <strong>printed</strong> (tape to a wall), or on a <strong>tablet</strong> as a digital frame. Walk the family through — explain your creative choices and what prompts worked best. You're the curator!</p>
         </div>
 
-        <div class="callout callout-levelup">
-            <div class="callout-label">🚀 Level Up</div>
-            Create a 3-image series that tells a story (beginning, middle, end).
+        <div class="callout-row">
+            <div class="callout callout-levelup">
+                <div class="callout-label">🚀 Level Up</div>
+                Create a 3-image series that tells a story (beginning, middle, end).
+            </div>
+            <div class="callout callout-talk">
+                <div class="callout-label">💬 Talk About It</div>
+                "AI made the images, but you chose everything else. Who's the artist — you or the AI?"
+            </div>
+            <div class="callout callout-safety">
+                <div class="callout-label">🛡️ Safety Tip</div>
+                If an image looks weird or inappropriate, just move on and talk about why AI doesn't always get it right.
+            </div>
         </div>
-        <div class="callout callout-talk">
-            <div class="callout-label">💬 Talk About It</div>
-            "AI made the images, but you chose everything else. Who's the artist — you or the AI?"
-        </div>
-        <div class="callout callout-safety">
-            <div class="callout-label">🛡️ Safety Tip</div>
-            If an image looks weird or inappropriate, just move on. Talk about why AI doesn't always understand what we mean.
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>promptlings.ai</span>
         </div>
     </div>
 
     <!-- PROJECT 2 -->
-    <div class="project-section">
+    <div class="page project-page">
         <div class="project-header">
             <div class="project-number coral">2</div>
             <h2 class="project-title">✏️ Story Co-Writer</h2>
@@ -633,24 +637,24 @@
 
         <div class="step">
             <h4>Step 1: Choose Your Story Ingredients 🧪</h4>
-            <p>Fill in BEFORE touching AI: Main character + Setting + Problem + Mood</p>
-            <div class="prompt-example">Example: "Luna, 11, talks to birds — floating city above clouds — city is sinking — adventurous"</div>
+            <p>Fill in <strong>before</strong> touching any AI tool: Main character (name, age, one fun trait) + Setting (where/when) + Problem (what goes wrong) + Mood (funny? spooky? adventurous?)</p>
+            <div class="prompt-example">Example: "Luna, 11, talks to birds — floating city above clouds — city is sinking — adventurous and mysterious"</div>
         </div>
         <div class="step">
             <h4>Step 2: Get Starter Ideas from AI 💡</h4>
             <p>Share your ingredients from Step 1:</p>
-            <div class="prompt-example">"I'm writing a short story. Here are my ingredients: [paste your character, setting, problem, and mood from Step 1]. Give me 3 different opening ideas. Keep each to 2-3 sentences."</div>
+            <div class="prompt-example">"I'm writing a short story. Here are my ingredients: [paste character, setting, problem, mood from Step 1]. Give me 3 different opening ideas, 2-3 sentences each."</div>
             <p>Read all three together. Your kid picks their favorite (or mixes and matches!).</p>
         </div>
         <div class="step">
             <h4>Step 3: Write the First Paragraph Yourself ✍️</h4>
-            <p><strong>Your kid writes the opening in their own words.</strong> Use AI's starter idea as inspiration, not a copy source. First drafts don't have to be perfect!</p>
+            <p><strong>Your kid writes the opening in their own words.</strong> Use AI's idea as inspiration, not a copy source. First drafts don't have to be perfect!</p>
         </div>
         <div class="step">
             <h4>Step 4: Keep Writing — Ask AI When You Get Stuck 🤔</h4>
-            <p>Continue the story! <strong>This step is optional for each section</strong> — if the words are flowing, keep going! Only ask AI when you need a spark:</p>
+            <p>Continue the story! <strong>This is optional</strong> — if the words are flowing, keep going! Only ask AI when you need a spark:</p>
             <div class="prompt-example">"My character just found the engine room flooded. Give me 3 ideas for what she discovers there."</div>
-            <p>Pick an idea you like, then <strong>keep writing in your own words.</strong> Pattern: Write → Ask AI for ideas when stuck → Pick favorite → Write more. Aim for 250-400 words.</p>
+            <p>Pick an idea, then <strong>keep writing in your own words.</strong> Pattern: Write → Ask AI when stuck → Pick favorite → Write more. Aim for 250–400 words.</p>
         </div>
         <div class="step">
             <h4>Step 5: AI Editor 📋</h4>
@@ -661,22 +665,28 @@
             <p>Revise based on feedback they agree with (they're the author — they don't have to accept all of it!), then read to the family. Applause mandatory. 👏</p>
         </div>
 
-        <div class="callout callout-levelup">
-            <div class="callout-label">🚀 Level Up</div>
-            Try a "chain story" — alternate paragraphs with AI. See if family can tell who wrote which!
+        <div class="callout-row">
+            <div class="callout callout-levelup">
+                <div class="callout-label">🚀 Level Up</div>
+                Try a "chain story" — alternate paragraphs with AI. Can the family tell who wrote which?
+            </div>
+            <div class="callout callout-talk">
+                <div class="callout-label">💬 Talk About It</div>
+                "You used AI for ideas but made the choices. How is this different from AI writing the whole thing?"
+            </div>
+            <div class="callout callout-safety">
+                <div class="callout-label">🛡️ Safety Tip</div>
+                Never paste personal stories or journal entries into AI. Keep stories fictional — no real names or details.
+            </div>
         </div>
-        <div class="callout callout-talk">
-            <div class="callout-label">💬 Talk About It</div>
-            "You used AI for ideas but made the choices. How is this different from AI writing the whole thing?"
-        </div>
-        <div class="callout callout-safety">
-            <div class="callout-label">🛡️ Safety Tip</div>
-            Never paste personal stories or journal entries into AI. Keep stories fictional — no real names or details.
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>promptlings.ai</span>
         </div>
     </div>
 
     <!-- PROJECT 3 -->
-    <div class="project-section">
+    <div class="page project-page">
         <div class="project-header">
             <div class="project-number mint">3</div>
             <h2 class="project-title">🧠 AI Quiz Master</h2>
@@ -690,56 +700,57 @@
 
         <div class="step">
             <h4>Step 1: Choose Quiz Categories 📚</h4>
-            <p>Pick 3-5 topics: Animals 🐍, Movies 🎬, Space 🚀, Sports ⚽, Weird History 🏛️, World Food 🍕</p>
+            <p>Pick 3–5 topics the whole family enjoys: Animals 🐍, Movies 🎬, Space 🚀, Sports ⚽, Weird History 🏛️, World Food 🍕</p>
         </div>
         <div class="step">
             <h4>Step 2: Generate Questions — One Category at a Time 🤖</h4>
-            <p>For <strong>each category</strong> you picked, use this prompt:</p>
-            <div class="prompt-example">"Create 5 multiple-choice trivia questions about [CATEGORY]. Make 2 easy (ages 8+), 2 medium (ages 12+), 1 hard (challenge adults). Include fun facts."</div>
-            <p>Repeat for all 3–5 categories. You'll end up with 15–25 questions total!</p>
+            <p>For <strong>each category</strong> you picked, use this prompt. Repeat for all 3–5 categories (15–25 questions total!):</p>
+            <div class="prompt-example">"Create 5 multiple-choice trivia questions about [CATEGORY]. Make 2 easy (ages 8+), 2 medium (ages 12+), 1 hard (challenge adults). Include 4 answer choices, mark the correct one, and add a fun fact."</div>
         </div>
         <div class="step">
-            <h4>Step 3: Fact-Check! 🔍 (Most Important Step!)</h4>
-            <p><strong>AI gets facts wrong.</strong> For each category, look up at least 2–3 answers using a search engine. Track mistakes you catch — that's awesome learning!</p>
+            <h4>Step 3: Fact-Check the Answers! 🔍 (Most Important Step!)</h4>
+            <p><strong>AI gets facts wrong!</strong> For each category, look up at least 2–3 answers with a search engine. Track mistakes you catch — that's awesome learning!</p>
         </div>
         <div class="step">
-            <h4>Step 4: Set Up Your Scoring System 🏆</h4>
-            <p>Write point values next to each question: <strong>Easy = 1pt</strong>, <strong>Medium = 2pts</strong>, <strong>Hard = 3pts</strong>.</p>
+            <h4>Step 4: Set Up Scoring 🏆</h4>
+            <p>Write point values next to each question on your answer sheet: <strong>Easy = 1pt</strong>, <strong>Medium = 2pts</strong>, <strong>Hard = 3pts</strong>.</p>
         </div>
         <div class="step">
             <h4>Step 5: Build Your Answer Sheet 📋</h4>
-            <p>Organize questions by round (one per category). Include point values! The quiz master needs answers AND scores.</p>
+            <p>Organize questions by round (one per category). Include point values! The quiz master needs answers AND scores ready.</p>
         </div>
         <div class="step">
             <h4>Step 6: Create a Wager Round Finale 🎰</h4>
-            <p>Prepare <strong>before quiz night</strong>: one big tricky final question. After all rounds, each player secretly wagers some of their points. Right = add them. Wrong = lose them. Anyone can still win! 🎲</p>
-            <div class="prompt-example">"Give me one challenging but fair trivia question for a family quiz final wager round. Hard enough for adults but not impossible for a smart 10-year-old."</div>
+            <p>Prepare <strong>before quiz night:</strong> one big tricky final question. After all rounds, each player secretly wagers some of their points. Right = add them. Wrong = lose them. Anyone can still win! 🎲</p>
+            <div class="prompt-example">"Give me one challenging but fair trivia question for a family quiz wager round. Hard for adults but not impossible for a smart 10-year-old."</div>
         </div>
         <div class="step">
             <h4>Step 7: Host Quiz Night! 🎙️</h4>
-            <p>All the prep is done — showtime! Kid stands at the front, reads questions dramatically, keeps score after each round. Play the Wager Round as the grand finale!</p>
-        </div>
-        <div class="step">
-            <h4>Step 8: Award Ceremony 🥇</h4>
-            <div class="prompt-example">"Create 5 funny, kind quiz awards like 'Fastest Buzzer Brain' or 'Most Creative Wrong Answer.'"</div>
+            <p>Showtime! Kid stands at the front, reads questions dramatically, keeps score after each round. Wager Round is the grand finale! Ask AI for silly awards: <em>"Create 5 funny quiz awards like 'Fastest Buzzer Brain.'"</em></p>
         </div>
 
-        <div class="callout callout-levelup">
-            <div class="callout-label">🚀 Level Up</div>
-            Create a "Personalized Round" with questions about your family's specific interests!
+        <div class="callout-row">
+            <div class="callout callout-levelup">
+                <div class="callout-label">🚀 Level Up</div>
+                Create a "Personalized Round" — questions about your family's specific interests!
+            </div>
+            <div class="callout callout-talk">
+                <div class="callout-label">💬 Talk About It</div>
+                "You found wrong answers by fact-checking. Where else in life should we double-check what we hear?"
+            </div>
+            <div class="callout callout-safety">
+                <div class="callout-label">🛡️ Safety Tip</div>
+                Keep topics about public knowledge (science, history, pop culture) — not about real people in your life.
+            </div>
         </div>
-        <div class="callout callout-talk">
-            <div class="callout-label">💬 Talk About It</div>
-            "You found wrong answers by fact-checking. Where else in life should we double-check what we hear?"
-        </div>
-        <div class="callout callout-safety">
-            <div class="callout-label">🛡️ Safety Tip</div>
-            Keep quiz topics about public knowledge (science, history, pop culture) — not about real people in your life.
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>promptlings.ai</span>
         </div>
     </div>
 
     <!-- PROJECT 4 -->
-    <div class="project-section">
+    <div class="page project-page">
         <div class="project-header">
             <div class="project-number gold">4</div>
             <h2 class="project-title">⚔️ Prompt Battle</h2>
@@ -753,7 +764,7 @@
 
         <div class="step">
             <h4>Step 1: Pick a Judge 👨‍⚖️</h4>
-            <p>One judge, or everyone votes (can't vote for yourself). Both work great!</p>
+            <p>One person judges, or everyone votes (can't vote for yourself!). Both work great.</p>
         </div>
         <div class="step">
             <h4>Step 2: Choose Your Battle Format 🎯</h4>
@@ -761,44 +772,50 @@
         </div>
         <div class="step">
             <h4>Step 3: Announce the Challenge! 📢</h4>
-            <p><strong>Image:</strong> "Cutest animal doing something unexpected" · "Design your dream treehouse" · "Alien's living room"</p>
-            <p><strong>Text:</strong> "Funniest knock-knock joke" · "Explain gravity to a confused penguin" · "Rap about doing dishes"</p>
+            <p><strong>Image ideas:</strong> "Cutest animal doing something unexpected" · "Design your dream treehouse" · "Alien's living room" · "Most ridiculous pizza"</p>
+            <p><strong>Text ideas:</strong> "Funniest knock-knock joke" · "Explain gravity to a confused penguin" · "Rap about doing dishes" · "Spell for making homework disappear"</p>
         </div>
         <div class="step">
             <h4>Step 4: Write in Secret! 🤫</h4>
-            <p>5 minutes. Everyone writes their prompt <strong>on paper</strong> — no peeking! You only need one computer. Kids and adults play by the same rules!</p>
+            <p>Set a timer: <strong>5 minutes.</strong> Everyone writes their prompt <strong>on paper</strong> — no peeking! You only need one computer for the whole game. Kids and adults play by the same rules!</p>
         </div>
         <div class="step">
             <h4>Step 5: Reveal & Vote! 🎬👑</h4>
-            <p>Take turns typing prompts into the AI on <strong>one shared screen</strong> while everyone watches the results come in. The dramatic reveal is half the fun! Vote for your favorite (can't vote for yourself). Winner picks the next challenge! Play 3–5 rounds.</p>
+            <p>Take turns typing prompts into the AI on <strong>one shared screen</strong> while everyone watches the results come in. The dramatic reveal is half the fun! Vote for your favorite (can't vote for yourself). Winner picks the next challenge. Play 3–5 rounds for a full game!</p>
         </div>
 
-        <div style="background: var(--lavender); border-radius: 12px; padding: 0.85rem 1rem; margin: 0.75rem 0;">
-            <strong style="font-size: 0.9rem;">Pro tips for better prompts:</strong>
-            <ul style="font-size: 0.85rem; margin-left: 1rem; margin-top: 0.25rem; color: #374151;">
+        <div style="background: var(--lavender); border-radius: 10px; padding: 0.5rem 0.75rem; margin: 0.5rem 0;">
+            <strong style="font-size: 0.78rem;">💡 Pro tips for better prompts (share after round 1):</strong>
+            <ul style="font-size: 0.75rem; margin-left: 1rem; margin-top: 0.15rem; color: #374151; line-height: 1.4;">
                 <li><strong>Be specific:</strong> "happy golden retriever puppy" beats "a dog"</li>
-                <li><strong>Add style:</strong> "watercolor painting" or "as a cartoon"</li>
+                <li><strong>Add style:</strong> "in the style of a watercolor painting" or "as a cartoon"</li>
                 <li><strong>Set the scene:</strong> "sitting on a cloud reading a tiny book"</li>
                 <li><strong>Add mood:</strong> "cozy and warm" or "dramatic and epic"</li>
             </ul>
         </div>
 
-        <div class="callout callout-levelup">
-            <div class="callout-label">🚀 Level Up</div>
-            Telephone Prompt: Player 1 generates an image. Player 2 sees ONLY the image and writes a prompt to recreate it!
+        <div class="callout-row">
+            <div class="callout callout-levelup">
+                <div class="callout-label">🚀 Level Up</div>
+                Telephone Prompt: Player 1 generates an image. Player 2 sees ONLY the image and writes a prompt to recreate it!
+            </div>
+            <div class="callout callout-talk">
+                <div class="callout-label">💬 Talk About It</div>
+                "Why did some prompts work better? Is writing a good prompt a skill? What other skills is it like?"
+            </div>
+            <div class="callout callout-safety">
+                <div class="callout-label">🛡️ Safety Tip</div>
+                Keep all prompts kind and appropriate. Nothing about real people, nothing mean. Disqualified if it crosses a line!
+            </div>
         </div>
-        <div class="callout callout-talk">
-            <div class="callout-label">💬 Talk About It</div>
-            "Why did some prompts work better? Is writing a good prompt a skill? What other skills is it like?"
-        </div>
-        <div class="callout callout-safety">
-            <div class="callout-label">🛡️ Safety Tip</div>
-            Family rule: keep all prompts kind and appropriate. Nothing about real people, nothing mean. Disqualified if it crosses a line!
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>promptlings.ai</span>
         </div>
     </div>
 
     <!-- PROJECT 5 -->
-    <div class="project-section">
+    <div class="page project-page">
         <div class="project-header">
             <div class="project-number navy">5</div>
             <h2 class="project-title">🎵 AI Music Video</h2>
@@ -812,56 +829,53 @@
 
         <div class="step">
             <h4>Step 1: Choose Your Song's Story 📝</h4>
-            <p>What's it about? What's the vibe? Who's the main character?</p>
+            <p>Answer three questions: What's the song <strong>about</strong>? What's the <strong>vibe</strong> (happy, dramatic, silly, epic)? Who's the <strong>main character</strong>?</p>
             <div class="prompt-example">Example: "A cat who dreams of going to space — upbeat and funny — named Captain Whiskers"</div>
         </div>
         <div class="step">
-            <h4>Step 2: Write Lyrics (with AI Help) 🎤</h4>
-            <p>Brainstorm key phrases on paper first — even 3–4 rough lines is great! Then share with AI:</p>
-            <div class="prompt-example">"I'm writing a fun song about [topic]. Here are my lines: [paste lines]. Help me turn these into a short song with one verse and one chorus. Keep my ideas — help with structure and rhyming."</div>
-            <p><strong>Your ideas first, AI helps with structure.</strong> Read it aloud — change anything that doesn't feel like "yours."</p>
+            <h4>Step 2: Write Lyrics with AI Help 🎤</h4>
+            <p>Brainstorm key phrases on paper first (even 3–4 rough lines!). Then share with AI:</p>
+            <div class="prompt-example">"I'm writing a fun song about [topic]. Here are my lines: [paste]. Help me turn these into a short song with one verse and one chorus. Keep my ideas — help with structure and rhyming."</div>
+            <p><strong>Your ideas first, AI helps with structure.</strong> Read aloud — change anything that doesn't feel like "yours."</p>
         </div>
         <div class="step">
             <h4>Step 3: Generate the Music 🎶</h4>
-            <p>Go to <strong>Suno.com</strong> (free tier, parent helps with signup). Click <strong>Create → Custom mode</strong> → paste lyrics → describe the style:</p>
-            <div class="prompt-example">"Upbeat pop song, fun and energetic, kid-friendly, catchy chorus"</div>
-            <p>Suno generates 2 versions (~30 sec). Pick your favorite! Free tier allows ~5 generations/day.</p>
+            <p>Go to <strong>Suno.com</strong> (free, parent helps signup). Click <strong>Create → Custom</strong> → paste lyrics → describe style. Generates 2 versions in ~30 sec. Pick your favorite! (~5 free generations/day)</p>
+            <div class="prompt-example">Style example: "Upbeat pop song, fun and energetic, kid-friendly, catchy chorus"</div>
         </div>
         <div class="step">
             <h4>Step 4: Create Music Video Art 🎨</h4>
-            <p><strong>Listen to your song first</strong>, then plan scenes that match each section. Think like a storyboard!</p>
-            <div class="prompt-example">"Captain Whiskers looking up at stars from a rooftop at night, dreamy and colorful, cartoon style" (verse)</div>
-            <div class="prompt-example">"Captain Whiskers in a tiny space helmet blasting off, colorful stars, cartoon style" (chorus)</div>
-            <p>Generate 5–8 images. Keep style consistent (always say "cartoon style" or "watercolor") for a cohesive look.</p>
+            <p><strong>Listen to your song first</strong>, then create 5–8 images matching each section — think storyboard! Keep style consistent ("cartoon style" or "watercolor" in every prompt).</p>
+            <div class="prompt-example">"Captain Whiskers looking up at stars from a rooftop, dreamy, cartoon style" (verse) · "Captain Whiskers in a space helmet blasting off, colorful stars, cartoon style" (chorus)</div>
         </div>
         <div class="step">
             <h4>Step 5: Build Your Video 🎬</h4>
-            <p>Use Google Slides, Canva, or CapCut. Add images <strong>in order matching your song</strong> (verse 1 → verse 1 images). Add lyrics as text so viewers can sing along. ~5–10 sec per slide.</p>
+            <p>Google Slides, Canva, or CapCut — add images <strong>in order matching your song</strong>. Add lyrics as text so viewers sing along. ~5–10 sec per slide.</p>
         </div>
         <div class="step">
-            <h4>Step 6: Add the Music 🔊</h4>
-            <p><strong>Easy:</strong> Play Suno song aloud while clicking slides on beat. <strong>Better:</strong> Download from Suno (click "..." menu), import into Canva/CapCut/iMovie. <strong>Pro:</strong> Screen-record the slideshow while the song plays.</p>
-        </div>
-        <div class="step">
-            <h4>Step 7: Premiere Night! 🍿</h4>
-            <p>Dim lights, make popcorn, introduce the video. Your living room is the film festival!</p>
+            <h4>Step 6: Add Music + Premiere Night! 🔊🍿</h4>
+            <p><strong>Easy:</strong> Play song aloud while clicking slides. <strong>Better:</strong> Download from Suno ("..." menu) → import into Canva/CapCut/iMovie. <strong>Pro:</strong> Screen-record the slideshow. Then dim the lights, make popcorn, and host a family premiere! 🎬</p>
         </div>
 
-        <div class="callout callout-levelup">
-            <div class="callout-label">🚀 Level Up</div>
-            Record a "Director's Commentary" — what prompts worked, what surprised you, what you'd change.
+        <div class="callout-row">
+            <div class="callout callout-levelup">
+                <div class="callout-label">🚀 Level Up</div>
+                Record a "Director's Commentary" — what prompts worked, what surprised you, what you'd change.
+            </div>
+            <div class="callout callout-talk">
+                <div class="callout-label">💬 Talk About It</div>
+                "You directed everything — lyrics, style, images, assembly. Is a director an artist?"
+            </div>
+            <div class="callout callout-safety">
+                <div class="callout-label">🛡️ Safety Tip</div>
+                Don't use real people's names in lyrics (especially classmates/teachers). Keep it creative and fictional.
+            </div>
         </div>
-        <div class="callout callout-talk">
-            <div class="callout-label">💬 Talk About It</div>
-            "You wrote the lyrics, chose the style, picked the images, assembled the video. Is a director an artist?"
-        </div>
-        <div class="callout callout-safety">
-            <div class="callout-label">🛡️ Safety Tip</div>
-            Don't use real people's names in lyrics (especially classmates or teachers). Keep it creative and fictional.
+        <div class="page-footer">
+            <span class="page-footer-brand">Promptlings</span>
+            <span>promptlings.ai</span>
         </div>
     </div>
-
-    </div><!-- end projects flow section -->
 
     <!-- RULES POSTER -->
     <div class="page page-break" style="display: flex; flex-direction: column; justify-content: center; min-height: 11in;">
