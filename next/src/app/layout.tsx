@@ -25,6 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://promptlings.ai"),
   title: "Promptlings — AI Literacy for Kids",
   description:
     "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers. Live classes, small groups, safety-first. Join the waitlist.",
@@ -35,15 +36,29 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://promptlings.ai",
     siteName: "Promptlings",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Promptlings — AI Literacy for Kids",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Promptlings — AI Literacy for Kids",
     description:
       "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers.",
+    images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 

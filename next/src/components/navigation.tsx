@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -40,22 +41,15 @@ export function Navigation() {
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 no-underline">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet to-mint flex items-center justify-center">
-            <span className="text-white font-bold text-sm">P</span>
-          </div>
-          <span
-            className="font-[var(--font-orbitron)] font-bold text-lg tracking-[2px]"
-            style={{
-              fontFamily: "var(--font-orbitron), sans-serif",
-              background: "linear-gradient(135deg, #9F67FF, #34D399)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            PROMPTLINGS
-          </span>
+        <Link href="/" className="flex items-center no-underline">
+          <Image
+            src="/img/logo-1.webp"
+            alt="Promptlings — AI Literacy for Kids"
+            width={180}
+            height={98}
+            className="h-9 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

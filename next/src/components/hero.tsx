@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { WaitlistForm } from "./waitlist-form";
 
 export function Hero() {
@@ -130,7 +131,7 @@ export function Hero() {
               <div className="absolute -top-1 left-1/2 w-2 h-2 rounded-full bg-mint shadow-[0_0_10px_var(--color-mint)]" />
             </div>
 
-            {/* Hero image placeholder */}
+            {/* Hero illustration */}
             <div
               className="relative rounded-3xl overflow-hidden border border-glass-border shadow-[0_0_60px_rgba(124,58,237,0.2),0_25px_50px_rgba(0,0,0,0.4)]"
               style={{ animation: "float 6s ease-in-out infinite" }}
@@ -143,21 +144,15 @@ export function Hero() {
                   animation: "glow-rotate 8s linear infinite",
                 }}
               />
-              <div className="w-[400px] max-w-full aspect-[4/3] bg-gradient-to-br from-navy to-violet/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">🚀</div>
-                  <p
-                    className="text-violet-glow text-sm font-semibold tracking-wider uppercase"
-                    style={{
-                      fontFamily: "var(--font-jetbrains-mono), monospace",
-                    }}
-                  >
-                    Hero Image
-                  </p>
-                  <p className="text-white-dim text-xs mt-1">
-                    Kids learning AI with Pip, Giga &amp; Nova
-                  </p>
-                </div>
+              <div className="w-[480px] max-w-full aspect-[16/7] relative">
+                <Image
+                  src="/img/hero-banner.webp"
+                  alt="Pip, Giga, and Nova — the Promptlings mascots — ready to explore AI together"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                />
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const pageLinks = [
   { href: "/#programs", label: "Programs" },
@@ -21,16 +22,16 @@ export function Footer() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Brand */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-md bg-gradient-to-br from-violet to-mint flex items-center justify-center">
-              <span className="text-white font-bold text-xs">P</span>
-            </div>
-            <span
-              className="text-sm font-semibold text-white-dim tracking-wider"
-              style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
-            >
-              PROMPTLINGS
-            </span>
+          <div className="flex items-center">
+            <Link href="/">
+              <Image
+                src="/img/logo-1.webp"
+                alt="Promptlings — AI Literacy for Kids"
+                width={140}
+                height={76}
+                className="h-7 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </Link>
           </div>
 
           {/* Links */}

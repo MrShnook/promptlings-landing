@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const tiers = [
   {
     name: "Explorers",
@@ -7,6 +9,7 @@ const tiers = [
     color: "#34D399",
     colorBg: "rgba(52, 211, 153, 0.15)",
     emoji: "🔭",
+    mascotImage: "/img/pip.webp",
     features: [
       "What is AI? Friendly intro concepts",
       "Prompt crafting through storytelling",
@@ -23,6 +26,7 @@ const tiers = [
     color: "#7C3AED",
     colorBg: "rgba(124, 58, 237, 0.15)",
     emoji: "🤖",
+    mascotImage: "/img/giga.webp",
     featured: true,
     features: [
       "Hands-on prompt engineering",
@@ -41,6 +45,7 @@ const tiers = [
     color: "#FF6B6B",
     colorBg: "rgba(255, 107, 107, 0.15)",
     emoji: "💫",
+    mascotImage: "/img/nova.webp",
     features: [
       "Advanced prompt architecture",
       "Full-stack AI app development",
@@ -87,23 +92,36 @@ export function CourseTiers() {
           </p>
         </div>
 
-        {/* Mascots placeholder */}
+        {/* Mascots */}
         <div className="flex justify-center mb-12">
           <div
-            className="w-full max-w-[500px] aspect-[5/2] rounded-2xl bg-gradient-to-r from-mint/10 via-violet/10 to-coral/10 flex items-center justify-center border border-glass-border"
+            className="flex items-end justify-center gap-6 w-full max-w-[600px]"
             style={{ animation: "float 8s ease-in-out infinite" }}
           >
-            <div className="text-center">
-              <div className="text-5xl mb-2">🧑‍🚀 🤖 🚀</div>
-              <p
-                className="text-white-dim text-xs tracking-wider uppercase"
-                style={{
-                  fontFamily: "var(--font-jetbrains-mono), monospace",
-                }}
-              >
-                Pip · Giga · Nova
-              </p>
-            </div>
+            {tiers.map((tier) => (
+              <div key={tier.name} className="flex flex-col items-center">
+                <div
+                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-glass-border"
+                  style={{ background: tier.colorBg }}
+                >
+                  <Image
+                    src={tier.mascotImage}
+                    alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} — the ${tier.name} mascot guide`}
+                    fill
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 112px, 144px"
+                  />
+                </div>
+                <p
+                  className="text-white-dim text-[0.65rem] tracking-wider uppercase mt-2"
+                  style={{
+                    fontFamily: "var(--font-jetbrains-mono), monospace",
+                  }}
+                >
+                  {tier.mascot.replace(/[★⚡🚀] /, "")}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -150,10 +168,16 @@ export function CourseTiers() {
 
               {/* Mascot icon */}
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-5 relative z-[1]"
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 relative z-[1] overflow-hidden"
                 style={{ background: tier.colorBg }}
               >
-                {tier.emoji}
+                <Image
+                  src={tier.mascotImage}
+                  alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} mascot icon`}
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                />
               </div>
 
               <div
