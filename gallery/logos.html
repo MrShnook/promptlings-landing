@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promptlings Logo Variants — Review Gallery</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0B0A1A; color: #F0EEFF; font-family: system-ui, sans-serif; padding: 2rem; }
+  h1 { text-align: center; margin-bottom: 0.5rem; }
+  .subtitle { text-align: center; color: #9F67FF; margin-bottom: 3rem; }
+  .section { margin-bottom: 4rem; }
+  .section h2 { color: #FF6B6B; margin-bottom: 1rem; border-bottom: 1px solid #1E1B4B; padding-bottom: 0.5rem; }
+  .section h3 { color: #34D399; margin: 1.5rem 0 0.75rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .card { background: rgba(30,27,75,0.5); border-radius: 12px; border: 1px solid #2a2766; overflow: hidden; }
+  .card .preview { padding: 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 150px; }
+  .card .preview.light { background: #f8f8f8; }
+  .card .preview.dark { background: #0B0A1A; }
+  .card .preview img { max-width: 100%; max-height: 200px; }
+  .card .label { padding: 0.75rem 1rem; font-size: 0.85rem; color: #aaa; border-top: 1px solid #2a2766; }
+  .card .label strong { color: #F0EEFF; }
+  .icon-row { display: flex; gap: 1rem; align-items: end; flex-wrap: wrap; padding: 1.5rem; background: rgba(30,27,75,0.5); border-radius: 12px; border: 1px solid #2a2766; }
+  .icon-item { text-align: center; }
+  .icon-item img { display: block; margin: 0 auto 0.5rem; }
+  .icon-item span { font-size: 0.75rem; color: #888; }
+  .nav-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .nav-bar a { padding: 0.5rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+  .nav-bar a.back { background: rgba(30,27,75,0.6); color: #9F67FF; border: 1px solid #9F67FF; }
+  .nav-bar a.cat { background: #7C3AED; color: white; }
+  a { color: #9F67FF; }
+</style>
+</head>
+<body>
+
+<h1>🎨 Logo Variants</h1>
+<p class="subtitle">All sizes per the <a href="https://www.polylogue.page/w/mr-shnook-CKgkMg/promptlings-logo-and-brand-usage-guide-sTHD_3">Brand Usage Guide</a></p>
+
+<nav class="nav-bar">
+  <a href="index.html" class="back">← Brand Assets</a>
+  <a href="catalog.html" class="cat">Character Catalog</a>
+</nav>
+
+<div class="section">
+  <h2>Logo 1 — Clean & Professional (Primary)</h2>
+  <p style="color:#888; margin-bottom:1.5rem;">Tier 2 — wordmark + icon. For nav, footer, partnerships, press kits.</p>
+  
+  <h3>On Light Background</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="preview light"><img src="../img/logos/logo-1-nav.png" alt="Logo 1 nav size"></div>
+      <div class="label"><strong>Nav Size</strong> — 480×262 PNG (105KB) / WebP (7KB)</div>
+    </div>
+    <div class="card">
+      <div class="preview light"><img src="../img/logos/logo-1-medium.png" alt="Logo 1 medium"></div>
+      <div class="label"><strong>Medium</strong> — 800×437 PNG (301KB) / WebP (13KB)</div>
+    </div>
+  </div>
+
+  <h3>On Dark Background</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="preview dark"><img src="../img/logos/logo-1-nav.png" alt="Logo 1 nav on dark"></div>
+      <div class="label"><strong>Nav Size (dark)</strong> — ⚠️ Needs transparent bg or light text variant</div>
+    </div>
+    <div class="card">
+      <div class="preview dark"><img src="../img/logos/logo-1-medium.png" alt="Logo 1 medium on dark"></div>
+      <div class="label"><strong>Medium (dark)</strong> — ⚠️ White background visible — needs transparent version</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Logo 2 — Playful & Character-Driven (Marketing)</h2>
+  <p style="color:#888; margin-bottom:1.5rem;">Tier 3 — for hero sections, social media, kid-facing materials.</p>
+  
+  <div class="grid">
+    <div class="card">
+      <div class="preview light"><img src="../img/logos/logo-2-medium.png" alt="Logo 2 medium"></div>
+      <div class="label"><strong>Medium (light bg)</strong> — 800×437 PNG (304KB) / WebP (24KB)</div>
+    </div>
+    <div class="card">
+      <div class="preview dark"><img src="../img/logos/logo-2-medium.png" alt="Logo 2 medium on dark"></div>
+      <div class="label"><strong>Medium (dark bg)</strong> — ⚠️ Also needs transparent bg</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Icon / Favicon (Pip)</h2>
+  <p style="color:#888; margin-bottom:1.5rem;">Tier 1 — maximum compression. Just Pip's face.</p>
+  
+  <h3>Size Ladder</h3>
+  <div class="icon-row">
+    <div class="icon-item"><img src="../img/logos/icon-16.png" alt="16px" width="16" height="16"><span>16px</span></div>
+    <div class="icon-item"><img src="../img/logos/icon-32.png" alt="32px" width="32" height="32"><span>32px</span></div>
+    <div class="icon-item"><img src="../img/logos/icon-48.png" alt="48px" width="48" height="48"><span>48px</span></div>
+    <div class="icon-item"><img src="../img/logos/icon-64.png" alt="64px" width="64" height="64"><span>64px</span></div>
+    <div class="icon-item"><img src="../img/logos/icon-128.png" alt="128px" width="128" height="128"><span>128px</span></div>
+    <div class="icon-item"><img src="../img/logos/icon-180.png" alt="180px" width="180" height="180"><span>180px<br>apple-touch</span></div>
+  </div>
+  
+  <h3 style="margin-top: 2rem;">Social Profile</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="preview dark"><img src="../img/logos/icon-social.png" alt="Social icon" style="max-height:150px; border-radius: 50%;"></div>
+      <div class="label"><strong>Social Profile</strong> — 400×400 (shown rounded)</div>
+    </div>
+    <div class="card">
+      <div class="preview dark"><img src="../img/logos/icon-512.png" alt="App icon" style="max-height:150px; border-radius: 20%;"></div>
+      <div class="label"><strong>App Icon</strong> — 512×512 (shown with app rounding)</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>OG / Social Share Image</h2>
+  <div class="card" style="max-width: 600px;">
+    <div class="preview dark"><img src="../img/logos/og-with-logo.jpg" alt="OG image"></div>
+    <div class="label"><strong>Open Graph</strong> — 1200×630 (47KB JPG)</div>
+  </div>
+</div>
+
+<div class="section" style="background: rgba(127,59,237,0.1); padding: 1.5rem; border-radius: 12px;">
+  <h2 style="border: none; padding: 0;">⚠️ Known Gaps</h2>
+  <ul style="color: #ccc; margin-top: 1rem; padding-left: 1.5rem;">
+    <li><strong>Transparent backgrounds</strong> — both logos have white/light backgrounds. Need transparent PNGs for use on the dark cosmic theme.</li>
+    <li><strong>SVG versions</strong> — auto-tracing crashed on these files. Best done in Figma or Illustrator for clean vectors. Low priority for v1 launch (PNGs work fine at web sizes).</li>
+    <li><strong>Dark-mode wordmark</strong> — Logo 1 "lings" is dark navy, invisible on dark bg. May need a light-text variant.</li>
+    <li><strong>Wordmark-only variant</strong> — Logo 1 without Pip character, for ultra-professional contexts.</li>
+  </ul>
+</div>
+
+</body>
+</html>
