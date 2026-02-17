@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promptlings — Hero Section Concepts</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d0a1a;
+      color: #e8e0f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #a78bfa, #f472b6, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      color: #9886b0;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .concepts {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .concept {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .concept:hover {
+      border-color: rgba(167, 139, 250, 0.3);
+    }
+    .concept-img {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+    .concept-info {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .concept-label {
+      flex: 1;
+    }
+    .concept-num {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #a78bfa;
+      margin-bottom: 0.3rem;
+    }
+    .concept-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f0eaf8;
+      margin-bottom: 0.5rem;
+    }
+    .concept-desc {
+      color: #9886b0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .concept-pros {
+      flex-shrink: 0;
+      min-width: 250px;
+    }
+    .concept-pros h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #7c6f8e;
+      margin-bottom: 0.5rem;
+    }
+    .concept-pros ul {
+      list-style: none;
+      padding: 0;
+    }
+    .concept-pros li {
+      color: #b8a8cc;
+      font-size: 0.85rem;
+      padding: 0.2rem 0;
+    }
+    .concept-pros li::before {
+      content: "✦ ";
+      color: #a78bfa;
+    }
+    .text-sim {
+      max-width: 1400px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+    }
+    .text-sim h2 {
+      font-size: 1.5rem;
+      color: #c4b5d9;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .text-sim p {
+      color: #7c6f8e;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .sim-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .sim-card {
+      position: relative;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      aspect-ratio: 3 / 1;
+    }
+    .sim-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sim-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 3rem;
+      background: linear-gradient(90deg, rgba(13,10,26,0.85) 0%, rgba(13,10,26,0.4) 60%, transparent 100%);
+    }
+    .sim-overlay h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .sim-overlay .tagline {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.8rem;
+    }
+    .sim-overlay .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, #a78bfa, #f472b6);
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      width: fit-content;
+    }
+    .nav-links {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 2rem;
+    }
+    .nav-links a {
+      color: #a78bfa;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 0.9rem;
+    }
+    .nav-links a:hover { text-decoration: underline; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+    }
+    @media (max-width: 768px) {
+      .concept-info { flex-direction: column; }
+      .concept-pros { min-width: auto; }
+      .sim-grid { grid-template-columns: 1fr; }
+      .sim-overlay h3 { font-size: 1.3rem; }
+      .sim-overlay .tagline { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Hero Section Concepts</h1>
+    <p>Four directions for the Promptlings landing page hero. Click any image to view full size. Each concept uses the approved Pip, Giga & Nova characters on the cosmic theme.</p>
+  </div>
+
+  <div class="concepts">
+
+    <!-- Concept 1 -->
+    <div class="concept">
+      <img class="concept-img" src="../img/hero-concepts/hero-concept-1-launchpad.webp" alt="Concept 1: Launch Pad" onclick="openLightbox(this.src)">
+      <div class="concept-info">
+        <div class="concept-label">
+          <div class="concept-num">Concept 1</div>
+          <div class="concept-title">🚀 The Launch Pad</div>
+          <div class="concept-desc">The trio stands together on a glowing cosmic platform, united and facing the viewer. Classic "team assembled" hero shot — iconic, clean, and immediately communicates "these are the characters." Floating code and particles add depth without competing for attention.</div>
+        </div>
+        <div class="concept-pros">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Cleanest composition for text overlay</li>
+            <li>Introduces all 3 characters instantly</li>
+            <li>Strong "brand identity" shot</li>
+            <li>Most versatile across screen sizes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept 2 -->
+    <div class="concept">
+      <img class="concept-img" src="../img/hero-concepts/hero-concept-2-workshop.webp" alt="Concept 2: The Workshop" onclick="openLightbox(this.src)">
+      <div class="concept-info">
+        <div class="concept-label">
+          <div class="concept-num">Concept 2</div>
+          <div class="concept-title">🔧 The Workshop</div>
+          <div class="concept-desc">Each mascot in their element — Pip exploring a prompt, Giga building with blocks, Nova conjuring creative energy. Shows what the characters <em>do</em>, not just who they are. Action-oriented, dynamic, tells a story.</div>
+        </div>
+        <div class="concept-pros">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Shows the "Prompt. Build. Create." tagline in action</li>
+            <li>Each character has a distinct activity</li>
+            <li>More narrative depth than a static pose</li>
+            <li>Natural left-to-right reading order</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept 3 -->
+    <div class="concept">
+      <img class="concept-img" src="../img/hero-concepts/hero-concept-3-portal.webp" alt="Concept 3: The Portal" onclick="openLightbox(this.src)">
+      <div class="concept-info">
+        <div class="concept-label">
+          <div class="concept-num">Concept 3</div>
+          <div class="concept-title">🌀 The Portal</div>
+          <div class="concept-desc">The mascots stand at the edge of a massive glowing portal/gateway into a digital cosmos. Sense of adventure, discovery, and "stepping into something new." Most dramatic and atmospheric of the four.</div>
+        </div>
+        <div class="concept-pros">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Strongest emotional hook (adventure/wonder)</li>
+            <li>The portal = a clear visual metaphor for AI learning</li>
+            <li>Most cinematic/dramatic feel</li>
+            <li>Great for "What's your prompt, explorer?" energy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept 4 -->
+    <div class="concept">
+      <img class="concept-img" src="../img/hero-concepts/hero-concept-4-classroom.webp" alt="Concept 4: Cosmic Classroom" onclick="openLightbox(this.src)">
+      <div class="concept-info">
+        <div class="concept-label">
+          <div class="concept-num">Concept 4</div>
+          <div class="concept-title">💡 The Cosmic Classroom</div>
+          <div class="concept-desc">The trio gathered around a floating holographic workspace, collaborating. The warmest and most "educational" of the concepts — speaks directly to parents about learning while still looking cool to kids.</div>
+        </div>
+        <div class="concept-pros">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Best for parent audience (learning-forward)</li>
+            <li>Collaborative energy matches the product</li>
+            <li>Holographic screen = real product reference</li>
+            <li>Warmest, most inviting tone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Text overlay simulation -->
+  <div class="text-sim">
+    <h2>With Text Overlay (Simulated)</h2>
+    <p>How each concept works as an actual hero section with headline, tagline, and CTA button.</p>
+    <div class="sim-grid">
+      <div class="sim-card">
+        <img src="../img/hero-concepts/hero-concept-1-launchpad-thumb.webp" alt="">
+        <div class="sim-overlay">
+          <h3>Your Kid's AI<br>Adventure Starts Here</h3>
+          <div class="tagline">Prompt. Build. Create.</div>
+          <span class="cta">Join the Waitlist →</span>
+        </div>
+      </div>
+      <div class="sim-card">
+        <img src="../img/hero-concepts/hero-concept-2-workshop-thumb.webp" alt="">
+        <div class="sim-overlay">
+          <h3>Your Kid's AI<br>Adventure Starts Here</h3>
+          <div class="tagline">Prompt. Build. Create.</div>
+          <span class="cta">Join the Waitlist →</span>
+        </div>
+      </div>
+      <div class="sim-card">
+        <img src="../img/hero-concepts/hero-concept-3-portal-thumb.webp" alt="">
+        <div class="sim-overlay">
+          <h3>Your Kid's AI<br>Adventure Starts Here</h3>
+          <div class="tagline">Prompt. Build. Create.</div>
+          <span class="cta">Join the Waitlist →</span>
+        </div>
+      </div>
+      <div class="sim-card">
+        <img src="../img/hero-concepts/hero-concept-4-classroom-thumb.webp" alt="">
+        <div class="sim-overlay">
+          <h3>Your Kid's AI<br>Adventure Starts Here</h3>
+          <div class="tagline">Prompt. Build. Create.</div>
+          <span class="cta">Join the Waitlist →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">← Brand Assets</a>
+    <a href="catalog.html">Character Catalog</a>
+    <a href="logos.html">Logo Variants</a>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      // Swap to full-res version
+      const full = src.replace('-thumb', '');
+      document.getElementById('lightbox-img').src = full;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
