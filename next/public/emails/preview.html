@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promptlings Email Sequence — Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1E1B4B;
+      color: #ffffff;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 24px 40px;
+      background: linear-gradient(135deg, #1E1B4B 0%, #312e81 50%, #7C3AED 100%);
+    }
+    .hero img { max-width: 240px; margin-bottom: 24px; }
+    .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+    .hero p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(30, 27, 75, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(124,58,237,0.3);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      display: inline-block;
+      padding: 8px 18px;
+      background: rgba(124,58,237,0.2);
+      color: #c4b5fd;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: 1px solid rgba(124,58,237,0.3);
+    }
+    .nav a:hover {
+      background: #7C3AED;
+      color: #ffffff;
+      border-color: #7C3AED;
+    }
+    .email-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    .email-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .email-number {
+      background: #7C3AED;
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .email-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .email-meta {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-bottom: 20px;
+      padding-left: 48px;
+    }
+    .email-frame-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      border: 1px solid rgba(124,58,237,0.2);
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      background: #f4f1fa;
+    }
+    .divider {
+      max-width: 720px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
+    }
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+    }
+    footer a { color: #a78bfa; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <img src="https://promptlings.ai/img/promptlings-nav.svg" alt="Promptlings">
+    <h1>Welcome Email Sequence</h1>
+    <p>5 emails that turn a waitlist signup into a paying family. Preview all of them below.</p>
+  </div>
+
+  <nav class="nav">
+    <a href="#email-1">1 — Welcome</a>
+    <a href="#email-2">2 — Mascots</a>
+    <a href="#email-3">3 — Activity</a>
+    <a href="#email-4">4 — Safety</a>
+    <a href="#email-5">5 — Early Bird</a>
+  </nav>
+
+  <!-- Email 1 -->
+  <div class="email-section" id="email-1">
+    <div class="email-label">
+      <div class="email-number">1</div>
+      <div class="email-title">Welcome + Lead Magnet</div>
+    </div>
+    <div class="email-meta">Sent immediately · Goal: Deliver value, set expectations</div>
+    <div class="email-frame-wrapper">
+      <iframe src="email-1-welcome.html" id="frame-1"></iframe>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Email 2 -->
+  <div class="email-section" id="email-2">
+    <div class="email-label">
+      <div class="email-number">2</div>
+      <div class="email-title">Meet the Mascots + Course Preview</div>
+    </div>
+    <div class="email-meta">Day 2 · Goal: Build connection, segment by age</div>
+    <div class="email-frame-wrapper">
+      <iframe src="email-2-mascots.html" id="frame-2"></iframe>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Email 3 -->
+  <div class="email-section" id="email-3">
+    <div class="email-label">
+      <div class="email-number">3</div>
+      <div class="email-title">Free Activity: AI Art Challenge</div>
+    </div>
+    <div class="email-meta">Day 4 · Goal: Create a quick win, build habit</div>
+    <div class="email-frame-wrapper">
+      <iframe src="email-3-activity.html" id="frame-3"></iframe>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Email 4 -->
+  <div class="email-section" id="email-4">
+    <div class="email-label">
+      <div class="email-number">4</div>
+      <div class="email-title">Parent Safety FAQ</div>
+    </div>
+    <div class="email-meta">Day 7 · Goal: Address objections, build trust</div>
+    <div class="email-frame-wrapper">
+      <iframe src="email-4-safety.html" id="frame-4"></iframe>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Email 5 -->
+  <div class="email-section" id="email-5">
+    <div class="email-label">
+      <div class="email-number">5</div>
+      <div class="email-title">Early Bird Pricing CTA</div>
+    </div>
+    <div class="email-meta">Day 10 · Goal: Convert to paid enrollment</div>
+    <div class="email-frame-wrapper">
+      <iframe src="email-5-earlybird.html" id="frame-5"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>Promptlings · Email Welcome Sequence · Built for <a href="https://kit.com">Kit (ConvertKit)</a></p>
+    <p style="margin-top:8px;">Each email uses inline CSS, table layout, VML buttons for Outlook, and {{ unsubscribe_url }} placeholders.</p>
+  </footer>
+
+  <script>
+    // Auto-resize iframes to fit content
+    function resizeFrames() {
+      document.querySelectorAll('iframe').forEach(frame => {
+        frame.addEventListener('load', () => {
+          try {
+            const h = frame.contentDocument.documentElement.scrollHeight;
+            frame.style.height = h + 'px';
+          } catch(e) {
+            frame.style.height = '1200px';
+          }
+        });
+      });
+    }
+    resizeFrames();
+  </script>
+
+</body>
+</html>
