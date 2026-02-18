@@ -1,0 +1,364 @@
+You are running iteration 1 of a sprint loop. Complete ALL unchecked items in the checklist below. Read the repo's CLAUDE.md or AGENTS.md first for project context.
+
+After completing each item, commit your changes with a descriptive message.
+
+When ALL items are complete and tests pass, output the exact line: SPRINT_COMPLETE
+
+If you get stuck on an item, skip it and move to the next. Output SPRINT_STUCK if you cannot make further progress.
+
+--- SPEC ---
+# Sprint: Landing Page v3 — Matt's Review Punch List
+
+**Date:** February 18, 2026
+**Branch:** Create `sprint/v3-punchlist` from current `sprint/claude-code`
+**Build:** `next-xi-eosin.vercel.app`
+**Review doc:** Polylogue — "Product Review: Promptlings Landing Page (Cosmic v2)"
+
+This sprint addresses 19 items from Matt's product review. This is a **polish and copy sprint**, not an architecture rewrite. Work inside existing components. Do NOT restructure routing, remove PostHog, or change the font system.
+
+---
+
+## Global Rules (Apply Everywhere)
+
+1. **Age range:** Change ALL instances of "8-16" or "8 to 16" → "8-18" or "8 to 18" across the entire codebase
+2. **Terminology:** Replace ALL instances of "track/tracks" → "path/paths" (e.g., "Pick your track" → "Pick your path", "Every track is led by" → "Every path is led by")
+3. **"kid" → "child"** in professional/CTA copy. "Kid" is okay in casual body text but NOT in headlines, CTAs, or form labels.
+4. **No emojis** in visible UI — replace with polished SVG icons or Lucide icons (already in deps). Emojis in comments/code are fine.
+5. **Copy tightness:** Every section's body text should be ruthlessly concise. One sentence per point. No paragraphs where a sentence will do.
+
+---
+
+## 1. Navigation (`src/components/navigation.tsx`) — [fix]
+
+### Logo (Issue #1)
+- The logo currently looks wrong in size and presentation on desktop
+- Set logo height to **36px** on desktop, **28px** on mobile, with `width: auto`
+- Ensure the logo image has a **transparent background** (use `/img/logos/logo-1-nav.webp`)
+- Add adequate spacing between logo and nav links
+- The logo should feel proportional to the nav bar — not oversized, not tiny
+
+### Mobile Menu (Issue #2)
+- **Center-align** all menu items in the mobile Sheet/drawer
+- Fix spacing: add consistent padding between menu items (at least `py-3` per item)
+- Menu items should have clear tap targets (min 44px height)
+- CTA button in mobile menu should be full-width with proper margins
+- Overall: the mobile menu should feel intentional and polished, not an afterthought
+
+---
+
+## 2. Hero Section (`src/components/hero.tsx`) — [fix]
+
+### Waitlist Form (Issue #3)
+- Email input must be **full width** of the form container (not cut off)
+- All form fields (email input, age dropdown, submit button) should have the **same height** (~48px)
+- All form fields should have the **same width** (stack vertically, each full-width of form area)
+- **Remove "optional"** from the age range dropdown label — just label it "Age Range" or "Child's Age Range"
+
+### Hero Copy (Issue #4)
+- Keep: `"Prompts. Builds. Create."` (tagline — unchanged)
+- **Replace** the subheadline. Old: "Your kid won't just use AI; they'll master it"
+  New: **"The future runs on AI. Your child will be ready."**
+- **Keep** the description paragraph but update age: "Promptlings teaches kids ages 8 to 18 to become AI creators through live, small-group classes — not passive screen time. Real skills for the future."
+
+### Mobile Hero Banner (Issue #5)
+- The hero background image doesn't work on mobile — the content is not visible
+- Add a **mobile fallback**: on screens < 768px, increase the scrim overlay opacity so text is always readable
+- Consider using `background-position: 30% center` on mobile to show a more relevant portion of the image
+- The hero MUST be readable on mobile without squinting — this is critical
+
+### Dropdown Styling (Issue #6)
+- Style the age range `<select>` dropdown to match the site's design language
+- Use the same glassmorphic styling as other form inputs: dark translucent background, subtle border, matching border-radius
+- The dropdown arrow should be a custom chevron icon positioned correctly (right-aligned with padding)
+- On open, the dropdown options should also be styled if possible (note: native `<select>` options have limited styling — consider using a Radix Select or shadcn Select component for full control)
+
+---
+
+## 3. Remove Trust Signal Cards (Issue #7)
+
+- **Remove** the `<TrustSignals />` component from `src/app/page.tsx`
+- These are the small cards/badges that appear right below the hero section
+- Matt says they break up the flow and are net negative — the same info is conveyed elsewhere
+- Do NOT delete the file yet (it may be repurposed for the "For Parents" section later) — just remove from page.tsx
+
+---
+
+## 4. Problem Section (`src/components/what-is-promptlings.tsx`) — [tweak]
+
+### Copy Rewrite (Issue #8)
+**Current:** Long-winded fear-based copy with dubious stats graphic on the right.
+
+**Replace with:** Clean, full-width section. The angle is **opportunity, not fear**. Tight, punchy copy.
+
+**New section header:** "The AI Generation" or "The Opportunity"
+
+**New copy (max 3-4 short lines):**
+> AI isn't coming — it's already here. Your child uses it every day without thinking about it.
+>
+> The kids who thrive won't just use AI. They'll know how to build with it, think with it, and make it work for them.
+>
+> Promptlings turns passive consumers into active creators.
+
+**Layout:**
+- Switch to **full-width** (remove the two-column split)
+- Remove the right-side stats/graphic entirely
+- Center the text with max-width ~700px
+- Consider a subtle supporting visual below the text — a "Consumer → Creator" concept using our mascot characters, OR just let the copy stand alone with generous whitespace
+
+### Style
+- Section background: consistent with site (navy-deep or slight gradient)
+- Text: clean hierarchy — headline in Orbitron, body in Space Grotesk
+- Keep it breathable — this section should feel like a moment of clarity, not a wall of text
+
+---
+
+## 5. Course Tiers (`src/components/course-tiers.tsx`) — [tweak + fix]
+
+### Section Header (Issue #9)
+- Keep `"// Choose Your Path"` (Matt likes this)
+- **Replace** subheader copy. New:
+  > "Pick the path that matches your child's age and watch them level up."
+- Remove any reference to "tracks" — use "paths" throughout
+- Keep the mascot-to-path connection implicit (characters are on the cards)
+
+### Card Parallelism (Issue #10)
+- All three cards must have **equal height** (use CSS grid or flex with `items-stretch`)
+- Each card gets **exactly 4 bullet points** following a consistent structure:
+
+**Explorers (Pip) — Ages 8-10:**
+1. Design your own AI chatbot buddy
+2. Create art and stories with AI tools
+3. Build a working story generator
+4. Learn prompt crafting and creative thinking
+
+**Builders (Giga) — Ages 11-13:**
+1. Code a real web app from scratch
+2. Train your own mini AI model
+3. Automate everyday tasks with AI
+4. Develop Python basics and data thinking
+
+**Creators (Nova) — Ages 14-18:**
+1. Ship a portfolio-ready project
+2. Build with real APIs and developer tools
+3. Present your work to an expert panel
+4. Master full-stack development and AI integration
+
+- Each bullet should follow the same grammatical structure: action verb → object → outcome/context
+- Mascot name is **Pip** for Explorers (NOT Byte — corrected by Matt)
+
+---
+
+## 6. How It Works (`src/components/how-it-works.tsx`) — [fix + tweak]
+
+### Remove Decorative Cards (Issue #11)
+- Remove any floating/decorative cards in this section that don't convey information
+- Keep only the core step-by-step content
+
+### Section Cleanup (Issue #12)
+- **Replace all emojis** with Lucide icons (e.g., `<Compass />` for step 1, `<Users />` for step 2, `<Rocket />` for step 3, `<Trophy />` for step 4). Import from `lucide-react`.
+- **One sentence per step** — cut all multi-sentence descriptions to a single clear line:
+  - Step 1 (Pick your path): "Choose Explorers, Builders, or Creators based on your child's age."
+  - Step 2 (Join a small group): "Get matched with 3-7 peers and a live instructor."
+  - Step 3 (Build real projects): "Every session ends with something your child made — not just watched."
+  - Step 4 (Level up): "Track progress, earn achievements, and build a portfolio."
+- **Tighter spacing** between steps — reduce vertical gaps
+- Replace "track" with "path" in step 1
+
+---
+
+## 7. Mid-Page CTA (`src/components/mid-page-cta.tsx`) — [fix]
+
+### Form Fixes (Issue #13)
+- Header and subheader should fit on **single lines** (no wrapping) on desktop. Reduce font size or tighten copy if needed.
+- Apply the same form styling fixes as the hero form: matching heights, custom-styled dropdown, correctly positioned arrow
+- Reuse the same `WaitlistForm` component (DRY — don't duplicate form code)
+
+---
+
+## 8. For Parents / Trust Signals (`src/components/for-parents.tsx`) — [fix]
+
+### Audit Claims (Issue #14)
+Only promise what we can deliver. Update the trust badges/cards to these:
+
+**Keep (can deliver today):**
+- ✅ "Full Lesson Transparency" — Parents receive complete lesson plans
+- ✅ "Live Instruction" — Every class led by a real instructor, not AI
+- ✅ "Small Groups" — Maximum 4:1 student-to-instructor ratio
+- ✅ "Vetted Tools" — Every AI tool reviewed for age-appropriateness
+- ✅ "Take-Home Resources" — Activity guides and practice materials after each session
+
+**Remove or reword:**
+- ❌ Remove "Progress Reports" (can't commit to individual reports in group setting)
+- ❌ Remove "Parent Dashboard" (doesn't exist)
+- ❌ Remove "Parent Community" (not built yet)
+- Any badges referencing features we don't have → cut them
+
+### Style
+- Keep the section's overall structure (it's a good section per Matt)
+- Use clean icons (Lucide) instead of emojis for badge icons
+
+---
+
+## 9. Meet the Founder (`src/components/meet-founder.tsx`) — [tweak]
+
+### Bio Rewrite (Issue #15)
+Replace the current corporate-sounding bio with this warmer, personal version:
+
+**Headline:** "Meet the Instructor"
+
+**Bio copy:**
+> "AI isn't coming — it's already here. My kids, William and Nora, interact with it every day without thinking about it. I built Promptlings because I believe the kids who thrive will be the ones who learn to create with AI, not just consume it.
+>
+> Live instruction breaks through the insecurity of being a beginner. Small groups give kids the confidence to try. And building real things is the only way to actually learn."
+>
+> — Matt Martin, Founder
+
+**Notes:**
+- Tone: warm, personal, first-person. NOT corporate.
+- The angle is opportunity ("the future is here, let's prepare") not criticism ("other solutions are bad")
+- Keep it to these 2-3 short paragraphs max
+- The photo placeholder should support a real photo later (Matt will provide). For now, keep the placeholder but make it sized for a **headshot** (square, ~200x200, rounded)
+
+---
+
+## 10. FAQ Section (`src/components/faq-section.tsx`) — [tweak]
+
+### Expand Answers (Issue #16 / FAQ feedback)
+- Keep the FAQ section (confirmed by Matt — good for PostHog instrumentation)
+- Make answers **more verbose and tier-specific** where relevant
+- This is where parents make decisions — give them real substance
+
+**Rewrite "What will my child actually learn?":**
+> **Explorers (ages 8-10):** Your child will learn to talk to AI using prompt engineering, create art and stories with AI tools, and build their first working project — a chatbot or story generator they design themselves.
+>
+> **Builders (ages 11-13):** Students dive into coding with Python, build real web applications, and learn to train simple AI models. They'll automate tasks and develop computational thinking skills.
+>
+> **Creators (ages 14-18):** Advanced students build portfolio-ready projects using real developer tools and APIs. They'll present their work to expert panels and develop skills directly applicable to college and careers.
+
+**Add these new questions:**
+
+- **"Who teaches the classes?"**
+  > Every class is taught by Matt Martin, Promptlings' founder and an experienced AI professional. This isn't a marketplace of random tutors — it's one instructor who knows every student by name. Matt brings real-world AI experience from the enterprise space, translated into projects kids actually care about.
+
+- **"What tools do you use?"**
+  > We use industry-standard AI tools including ChatGPT, Claude, and creative AI platforms — the same tools professionals use daily. Every tool is vetted for age-appropriateness and used in a supervised, instructor-led environment. No downloads required — everything runs in the browser.
+
+- **"What if my child has zero experience with AI?"**
+  > That's exactly who we built this for. Our Explorer path is designed for complete beginners. Your child will start with the basics — how to talk to AI, how to evaluate its responses, and how to use it creatively. No coding experience needed. Just curiosity.
+
+### Ensure full 10-question FAQ
+Keep existing good questions, replace weak ones, add the new ones above. Target exactly 10 questions total. Each answer should be **3-5 sentences** — substantive but scannable.
+
+---
+
+## 11. Footer CTA (`src/components/footer-cta.tsx`) — [fix]
+
+### Copy + Form (Issue #17)
+- Change headline to: **"Ready to Launch Your Child's AI Journey?"**
+- **Remove** "The early birds get 50% off" — strike this entirely
+- Subheader: keep brief, one line. Something like: "Join the waitlist for early access and founding member pricing."
+- Apply same form fixes: matching field heights, styled dropdown, remove "optional" from age, correct arrow position
+- Reuse `WaitlistForm` component
+
+---
+
+## 12. Footer (`src/components/footer.tsx`) — [fix]
+
+### Social Icons (Issue #18)
+- Replace all custom/cute social icons with **standard brand icons**
+- Use `lucide-react` icons or import the actual SVG brand marks:
+  - Instagram: `<Instagram />` from lucide
+  - YouTube: `<Youtube />` from lucide
+  - LinkedIn: `<Linkedin />` from lucide
+  - TikTok: Use a simple SVG icon (lucide doesn't have TikTok — embed an SVG or use `react-icons/si` → `SiTiktok`)
+- Each icon should link to `#` for now (we'll add real URLs later)
+
+### Logo
+- Fix the secondary Promptlings logo: must have **transparent background** and be appropriately sized (similar treatment as nav logo)
+- Height: ~32px in footer
+
+### Legal Links
+- Add footer links for: **Terms of Service** | **Privacy Policy** | **Refund Policy**
+- Link to: `/terms`, `/privacy`, `/refund` (pages will be created separately)
+- Style: small text, muted color, separated by pipes or dots
+
+---
+
+## 13. Legal Pages — NEW
+
+Create three new pages:
+
+### `/terms` (`src/app/terms/page.tsx`)
+Standard Terms of Service for an educational service. Include:
+- Service description (live online AI classes for kids 8-18)
+- User eligibility (parent/guardian must register on behalf of minor)
+- Acceptable use policy
+- Intellectual property (student projects belong to students)
+- Limitation of liability
+- Governing law (Arizona)
+
+### `/privacy` (`src/app/privacy/page.tsx`)
+Privacy Policy with COPPA considerations:
+- What data we collect (parent email, child's age range, first name)
+- How we use it (class enrollment, communications)
+- We do NOT sell data
+- We do NOT collect data directly from children under 13 without parental consent
+- Data retention and deletion rights
+- Contact info for privacy questions
+
+### `/refund` (`src/app/refund/page.tsx`)
+Refund/Cancellation Policy:
+- Full refund if cancelled 48+ hours before first class
+- Pro-rated refund for unused sessions
+- No refund for completed sessions
+- How to request (email)
+
+**Style:** All three pages use the same layout — dark background consistent with site, clean readable text (Space Grotesk), max-width ~800px centered, proper heading hierarchy. Simple and professional.
+
+---
+
+## Verification Checklist
+
+After ALL changes, verify:
+
+- [ ] `npm run build` succeeds with zero errors
+- [ ] **Navigation:** Logo properly sized on desktop (36px) and mobile (28px), transparent bg
+- [ ] **Mobile nav:** Menu items centered, proper spacing, full-width CTA
+- [ ] **Hero:** Form fields same height and full-width, no "optional" on age, dropdown styled
+- [ ] **Hero copy:** New headline reads "The future runs on AI. Your child will be ready."
+- [ ] **Hero mobile:** Text readable over background on all mobile widths (320px-768px)
+- [ ] **Dropdown:** Custom-styled to match site design language, arrow positioned correctly
+- [ ] **Trust cards removed:** No `<TrustSignals />` between Hero and Problem section
+- [ ] **Problem section:** Full-width, tight copy (3-4 lines max), no stats graphic
+- [ ] **Course tiers:** "Paths" not "tracks", all 3 cards equal height, exactly 4 bullets each, Pip (not Byte)
+- [ ] **How It Works:** Lucide icons (no emojis), one sentence per step, decorative cards removed
+- [ ] **Mid-page CTA:** Header/subheader don't wrap on desktop, styled form
+- [ ] **For Parents:** Only claims we can deliver, no progress reports/dashboard/community
+- [ ] **Founder bio:** Personal warm tone, correct quote, placeholder sized for headshot
+- [ ] **FAQ:** 10 questions, tier-specific answers, new questions added
+- [ ] **Footer CTA:** "child" not "kid", no discount text, styled form
+- [ ] **Footer:** Real social media icons, transparent logo, legal page links
+- [ ] **Legal pages:** /terms, /privacy, /refund all render correctly
+- [ ] **Global:** No instances of "8-16" remain (all updated to "8-18")
+- [ ] **Global:** No instances of "track/tracks" remain (all updated to "path/paths")
+- [ ] **Global:** No emojis in visible UI
+- [ ] **Mobile responsive:** All sections render properly on 375px width
+
+---
+
+## Deploy
+
+After verification:
+```bash
+cd next/
+npm run build
+source ~/.profile
+vercel deploy --token=$VERCEL_TOKEN
+```
+
+Post the preview URL when done.
+
+---
+
+*Sprint spec prepared by Mr. Shnook from Matt's product review — 18 items + legal pages.*
+--- END SPEC ---
