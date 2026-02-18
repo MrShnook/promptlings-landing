@@ -37,7 +37,9 @@ export function PartnerForm() {
   if (submitted) {
     return (
       <div className="glass-card p-10 text-center">
-        <div className="text-5xl mb-4">🎉</div>
+        <div className="w-14 h-14 rounded-full bg-mint/10 border border-mint/20 flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-mint" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+        </div>
         <h3
           className="text-mint font-bold text-xl mb-2"
           style={{ fontFamily: "var(--font-orbitron), sans-serif" }}

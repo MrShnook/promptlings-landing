@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PartnerForm } from "./partner-form";
+import { Target, GraduationCap, TrendingUp, ShieldCheck, ClipboardList } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Partners — Promptlings",
@@ -7,27 +9,27 @@ export const metadata: Metadata = {
     "Bring AI literacy to your school or after-school program. Partner with Promptlings.",
 };
 
-const benefits = [
+const benefits: { icon: LucideIcon; title: string; description: string }[] = [
   {
-    icon: "🎯",
+    icon: Target,
     title: "Turnkey Curriculum",
     description:
       "Fully designed lesson plans, materials, and AI tools. Just add students.",
   },
   {
-    icon: "👩‍🏫",
+    icon: GraduationCap,
     title: "Expert Instructors",
     description:
       "Our trained AI practitioners lead every session. Your staff observes and learns.",
   },
   {
-    icon: "📈",
+    icon: TrendingUp,
     title: "Measurable Outcomes",
     description:
       "Progress tracking, demo days, and portfolio projects parents love.",
   },
   {
-    icon: "🛡️",
+    icon: ShieldCheck,
     title: "Safety-First",
     description:
       "COPPA compliant, age-appropriate tools, and transparent data policies.",
@@ -122,12 +124,16 @@ export default function PartnersPage() {
             With Us?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((b) => (
+            {benefits.map((b) => {
+              const IconComponent = b.icon;
+              return (
               <div
                 key={b.title}
                 className="glass-card p-6 text-center hover:-translate-y-1 transition-transform duration-300"
               >
-                <div className="text-3xl mb-4">{b.icon}</div>
+                <div className="w-12 h-12 rounded-xl bg-violet/10 border border-violet/20 flex items-center justify-center mx-auto mb-4">
+                  <IconComponent className="w-6 h-6 text-violet-glow" />
+                </div>
                 <h3
                   className="text-cosmic-white font-semibold text-sm tracking-wide mb-2"
                   style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
@@ -138,7 +144,8 @@ export default function PartnersPage() {
                   {b.description}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -192,7 +199,9 @@ export default function PartnersPage() {
       <section className="py-20 relative z-2">
         <div className="max-w-[800px] mx-auto px-6">
           <div className="glass-card p-10 text-center">
-            <div className="text-4xl mb-4">📋</div>
+            <div className="w-14 h-14 rounded-xl bg-violet/10 border border-violet/20 flex items-center justify-center mx-auto mb-4">
+              <ClipboardList className="w-7 h-7 text-violet-glow" />
+            </div>
             <h2
               className="text-xl font-bold mb-4"
               style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
