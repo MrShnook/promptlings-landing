@@ -45,10 +45,11 @@ export function Footer() {
             <Link href="/">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/img/logos/logo-1-nav-final.png"
+                src="/img/logos/promptlings-logo-1.svg"
                 alt="Promptlings"
-                className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                className="h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
               />
             </Link>
           </div>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 56" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Terminal Icon -->
+  <g>
+    <!-- Rounded rectangle -->
+    <rect x="0" y="0" width="48" height="48" rx="10" fill="#7B4FD4"/>
+    <!-- > chevron -->
+    <path d="M14 14L26 24L14 34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- _ underscore cursor -->
+    <line x1="26" y1="34" x2="36" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <!-- Subtle highlight -->
+    <circle cx="7" cy="7" r="5" fill="white" opacity="0.12"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="58"
+    y="36"
+    font-family="'Nunito', 'Quicksand', 'Poppins', sans-serif"
+    font-weight="900"
+    font-size="38"
+    letter-spacing="-0.3"
+  >
+    <tspan fill="#7B4FD4">Prompt</tspan><tspan fill="#FFFFFF">lings</tspan>
+  </text>
+</svg>
