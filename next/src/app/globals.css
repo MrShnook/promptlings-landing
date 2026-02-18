@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-orbitron);
+
+  /* Cosmic color palette */
+  --color-violet: #7C3AED;
+  --color-violet-glow: #9F67FF;
+  --color-coral: #FF6B6B;
+  --color-coral-glow: #FF8E8E;
+  --color-navy-deep: #0B0A1A;
+  --color-navy: #1E1B4B;
+  --color-navy-mid: #151336;
+  --color-mint: #34D399;
+  --color-mint-glow: #6EEDB8;
+  --color-cosmic-white: #F0EEFF;
+  --color-white-dim: #A8A3C7;
+  --color-glass-bg: rgba(30, 27, 75, 0.45);
+  --color-glass-border: rgba(124, 58, 237, 0.25);
+  --color-glass-shine: rgba(255, 255, 255, 0.05);
+
+  /* shadcn mappings */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #0B0A1A;
+  --foreground: #F0EEFF;
+  --card: rgba(30, 27, 75, 0.45);
+  --card-foreground: #F0EEFF;
+  --popover: #1E1B4B;
+  --popover-foreground: #F0EEFF;
+  --primary: #7C3AED;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1E1B4B;
+  --secondary-foreground: #F0EEFF;
+  --muted: #151336;
+  --muted-foreground: #A8A3C7;
+  --accent: #9F67FF;
+  --accent-foreground: #F0EEFF;
+  --destructive: #FF6B6B;
+  --border: rgba(124, 58, 237, 0.25);
+  --input: rgba(124, 58, 237, 0.3);
+  --ring: #9F67FF;
+  --chart-1: #7C3AED;
+  --chart-2: #34D399;
+  --chart-3: #FF6B6B;
+  --chart-4: #9F67FF;
+  --chart-5: #6EEDB8;
+  --sidebar: #0B0A1A;
+  --sidebar-foreground: #F0EEFF;
+  --sidebar-primary: #7C3AED;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E1B4B;
+  --sidebar-accent-foreground: #F0EEFF;
+  --sidebar-border: rgba(124, 58, 237, 0.25);
+  --sidebar-ring: #9F67FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================
+   STARFIELD ANIMATIONS
+   ============================================ */
+@keyframes twinkle {
+  0% { opacity: var(--min-o, 0.2); transform: scale(1); }
+  100% { opacity: var(--max-o, 0.8); transform: scale(1.3); }
+}
+
+@keyframes shoot {
+  0% { transform: translateX(0) translateY(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(-400px) translateY(400px); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes type-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-rotate {
+  0% { filter: blur(20px) hue-rotate(0deg); }
+  100% { filter: blur(20px) hue-rotate(360deg); }
+}
+
+@keyframes orbit-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   GLASS CARD UTILITY
+   ============================================ */
+.glass-card {
+  background: rgba(30, 27, 75, 0.45);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================
+   SCANLINE OVERLAY
+   ============================================ */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.015) 2px,
+    rgba(0, 0, 0, 0.015) 4px
+  );
+  opacity: 0.4;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0A1A;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}

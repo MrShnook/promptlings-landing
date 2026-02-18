@@ -65,9 +65,9 @@ Promptlings is an AI literacy program for kids ages 8-16. This repo contains the
 4. **Blog** (`/blog`) — MDX posts with cosmic cards
 
 ## Age Tiers
-- **Explorers** (8-10) — Upper Elementary — mint accent
-- **Builders** (11-13) — Middle School — violet accent
-- **Creators** (14+) — High School — coral accent
+- **Explorers** (8-10) — Upper Elementary — mint accent — Mascot: **Pip**
+- **Builders** (11-13) — Middle School — violet accent — Mascot: **Giga**
+- **Creators** (14-18) — High School — coral accent — Mascot: **Nova**
 
 ## Forms
 - **Waitlist:** email (required) + age range dropdown (optional) → `console.log` for now
@@ -90,6 +90,21 @@ vercel deploy --token=$VERCEL_TOKEN  # Deploy
 - Keep bundle size minimal — no heavy animation libraries
 - Image placeholders as colored SVG rectangles with text labels
 
+## Age Tiers (UPDATED)
+- **Explorers** (8-10) — Mascot: **Pip** (NOT Byte) — mint accent
+- **Builders** (11-13) — Mascot: **Giga** — violet accent
+- **Creators** (14-18) — Mascot: **Nova** — coral accent
+
+Note: Age range is **8-18** everywhere (not 8-16).
+
+## Current Sprint
+
+**Read `next/SPRINT-V3.md` for the current task.**
+
+This is a polish + copy sprint from Matt's product review (19 items). Work inside existing components. Do NOT restructure routing, remove PostHog, or change the font system. The spec has detailed changes per component, new copy, and a verification checklist. Follow it precisely.
+
 ## Reference
 See `v2-cosmic.html` in the repo root for the approved visual direction.
-See `sprint-spec.md` for the full build checklist.
+See `sprint-spec.md` for the original build checklist.
+See `next/SPRINT-TUNEUP.md` for the previous tune-up sprint.
+See `next/SPRINT-V3.md` for the current sprint (Matt's review punch list).
