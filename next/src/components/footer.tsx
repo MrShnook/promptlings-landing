@@ -43,11 +43,10 @@ export function Footer() {
           {/* Brand */}
           <div className="flex items-center">
             <Link href="/">
-              <Image
-                src="/img/logos/logo-1-nav.webp"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/img/logos/promptlings-wordmark.svg"
                 alt="Promptlings"
-                width={140}
-                height={76}
                 className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
               />
             </Link>
