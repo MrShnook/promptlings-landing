@@ -1,5 +1,6 @@
 "use client";
 
+import posthog from "posthog-js";
 import {
   Accordion,
   AccordionItem,
@@ -299,7 +300,19 @@ export function CurriculumTiers() {
 
             {/* Week-by-week accordion */}
             <div className="mt-8">
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full"
+                onValueChange={(value) => {
+                  if (value) {
+                    posthog.capture("curriculum_path_viewed", {
+                      path_name: tier.name,
+                      age_range: tier.ages,
+                    });
+                  }
+                }}
+              >
                 <AccordionItem
                   value={`${tier.id}-curriculum`}
                   className="border-none"

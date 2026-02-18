@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import posthog from "posthog-js";
 
 const tiers = [
   {
@@ -158,6 +161,14 @@ export function CourseTiers() {
 
               <a
                 href="#waitlist"
+                onClick={() =>
+                  posthog.capture("cta_click", {
+                    cta_label: `Enroll ${tier.name.replace(/s$/, "")}`,
+                    path_name: tier.name,
+                    age_range: tier.ages,
+                    location: "course_tiers",
+                  })
+                }
                 className="block w-full py-3.5 text-center rounded-xl text-sm font-semibold tracking-wider uppercase transition-all border relative z-[1] mt-auto"
                 style={{
                   fontFamily: "var(--font-orbitron), sans-serif",

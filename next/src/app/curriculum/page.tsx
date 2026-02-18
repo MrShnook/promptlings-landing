@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CurriculumTiers } from "./curriculum-tiers";
 import { ShieldCheck, Download, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TrackedDownload } from "@/components/tracked-download";
 
 export const metadata: Metadata = {
   title: "Curriculum — Promptlings",
@@ -140,16 +141,11 @@ export default function CurriculumPage() {
               Download a sample lesson plan to see how we combine hands-on AI
               projects with critical thinking and safety education.
             </p>
-            <Button
-              asChild
-              className="bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/30 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all tracking-wider uppercase text-xs font-semibold"
-              style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
-            >
-              <Link href="/downloads/sample-lesson-plan.html">
-                <Download className="w-4 h-4 mr-2" />
-                Download Sample Lesson Plan
-              </Link>
-            </Button>
+            <TrackedDownload
+              href="/downloads/sample-lesson-plan.html"
+              label="Download Sample Lesson Plan"
+              resourceName="sample_lesson_plan"
+            />
           </div>
         </div>
       </section>

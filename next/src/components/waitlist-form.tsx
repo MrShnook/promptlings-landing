@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import posthog from "posthog-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronDown, Check } from "lucide-react";
@@ -34,8 +35,16 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
       }
 
       setSubmitted(true);
+      posthog.capture("waitlist_signup", {
+        age_range: age || "not specified",
+        form_location: variant === "stacked" ? "cta_section" : "hero",
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      posthog.capture("waitlist_signup_error", {
+        error: err instanceof Error ? err.message : "unknown",
+        form_location: variant === "stacked" ? "cta_section" : "hero",
+      });
     } finally {
       setLoading(false);
     }
