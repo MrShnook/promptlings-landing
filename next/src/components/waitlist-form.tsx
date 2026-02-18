@@ -13,11 +13,32 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Waitlist signup:", { email, age: age || "not specified" });
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, age: age || "not specified" }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -73,12 +94,16 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
         </select>
         <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white-dim pointer-events-none" />
       </div>
+      {error && (
+        <p className="text-red-400 text-sm text-center">{error}</p>
+      )}
       <Button
         type="submit"
-        className="w-full h-12 bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/40 shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all px-8 tracking-widest uppercase text-sm font-bold whitespace-nowrap"
+        disabled={loading}
+        className="w-full h-12 bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/40 shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all px-8 tracking-widest uppercase text-sm font-bold whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
       >
-        Join Waitlist <span className="ml-2">&rarr;</span>
+        {loading ? "Joining..." : <>Join Waitlist <span className="ml-2">&rarr;</span></>}
       </Button>
     </form>
   );
