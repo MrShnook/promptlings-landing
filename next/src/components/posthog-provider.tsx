@@ -4,15 +4,20 @@ import { useEffect, Suspense } from "react";
 import posthog from "posthog-js";
 import { usePathname, useSearchParams } from "next/navigation";
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || "";
-
+/**
+ * Tracks client-side navigations as $pageview events.
+ *
+ * PostHog is initialized in instrumentation-client.ts (runs before React
+ * hydration), so posthog.capture() is guaranteed to work here — no race
+ * condition with init.
+ */
 function PostHogPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!POSTHOG_KEY) return;
-    // posthog.capture queues events until init completes — no need to check __loaded
+    if (!posthog.__loaded) return; // guard: no key / init failed
+
     const url =
       window.origin +
       pathname +
@@ -23,24 +28,13 @@ function PostHogPageView() {
   return null;
 }
 
+/**
+ * Wraps children with PostHog pageview tracking.
+ *
+ * Init is handled by instrumentation-client.ts (module-scope, runs once
+ * before hydration). This component only provides the pageview tracker.
+ */
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    if (!POSTHOG_KEY) return;
-
-    posthog.init(POSTHOG_KEY, {
-      // Route through our Vercel reverse proxy to bypass ad blockers
-      api_host: "/ingest",
-      ui_host: "https://us.i.posthog.com",
-      capture_pageview: false, // We handle manually via PostHogPageView
-      capture_pageleave: true,
-      persistence: "localStorage",
-      person_profiles: "always", // Track all visitors including anonymous
-      loaded: (ph) => {
-        if (process.env.NODE_ENV === "development") ph.debug();
-      },
-    });
-  }, []);
-
   return (
     <>
       <Suspense fallback={null}>
