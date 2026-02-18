@@ -11,7 +11,8 @@ function PostHogPageView() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!POSTHOG_KEY || !posthog.__loaded) return;
+    if (!POSTHOG_KEY) return;
+    // posthog.capture queues events until init completes — no need to check __loaded
     const url =
       window.origin +
       pathname +
@@ -33,7 +34,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       capture_pageview: false, // We handle manually via PostHogPageView
       capture_pageleave: true,
       persistence: "localStorage",
-      person_profiles: "identified_only", // Only create profiles for identified users
+      person_profiles: "always", // Track all visitors including anonymous
+      loaded: (ph) => {
+        if (process.env.NODE_ENV === "development") ph.debug();
+      },
     });
   }, []);
 
