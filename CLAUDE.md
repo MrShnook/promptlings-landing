@@ -90,6 +90,13 @@ vercel deploy --token=$VERCEL_TOKEN  # Deploy
 - Keep bundle size minimal — no heavy animation libraries
 - Image placeholders as colored SVG rectangles with text labels
 
+## Current Sprint
+
+**Read `next/SPRINT-TUNEUP.md` for the current task.**
+
+This is a tune-up of the existing build — NOT a rewrite. All new assets are already staged in `next/public/`. The spec has 6 surgical changes with exact CSS values and a verification checklist. Follow it precisely.
+
 ## Reference
 See `v2-cosmic.html` in the repo root for the approved visual direction.
-See `sprint-spec.md` for the full build checklist.
+See `sprint-spec.md` for the original build checklist.
+See `next/SPRINT-TUNEUP.md` for the current tune-up sprint.
