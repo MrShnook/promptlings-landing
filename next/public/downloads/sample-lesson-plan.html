@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promptlings — Sample Lesson Plan: Meet Your AI Friend</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+    background: #ffffff;
+  }
+  
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 56px;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #7C3AED;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+    background: #7C3AED;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: monospace;
+  }
+  
+  .brand-text {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .brand-text span:first-child { color: #7C3AED; }
+  .brand-text span:last-child { color: #1a1a2e; }
+  
+  .header-meta {
+    text-align: right;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .header-meta .path-badge {
+    display: inline-block;
+    background: #F3E8FF;
+    color: #7C3AED;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  /* Title */
+  .title-block {
+    margin-bottom: 28px;
+  }
+  
+  .lesson-number {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7C3AED;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    color: #555;
+  }
+  
+  /* Info cards */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  
+  .info-card {
+    background: #F8F7FF;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  
+  .info-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  
+  .info-card .value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #7C3AED;
+  }
+  
+  /* Sections */
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #7C3AED;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  h2 .icon {
+    width: 24px;
+    height: 24px;
+    background: #F3E8FF;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+  
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 16px 0 8px;
+  }
+  
+  p, li {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  ul, ol {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+  
+  li {
+    margin-bottom: 4px;
+  }
+  
+  /* Callout boxes */
+  .callout {
+    background: #F8F7FF;
+    border-left: 3px solid #7C3AED;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  
+  .callout.safety {
+    background: #FFF7ED;
+    border-left-color: #FF6B6B;
+  }
+  
+  .callout.activity {
+    background: #F0FFF4;
+    border-left-color: #4ade80;
+  }
+  
+  .callout strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .callout.safety strong { color: #FF6B6B; }
+  .callout.activity strong { color: #22c55e; }
+  .callout strong:not(.safety strong):not(.activity strong) { color: #7C3AED; }
+  
+  /* Timeline */
+  .timeline-item {
+    display: flex;
+    gap: 14px;
+    margin: 12px 0;
+    align-items: flex-start;
+  }
+  
+  .time-badge {
+    background: #7C3AED;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    min-width: 56px;
+    text-align: center;
+  }
+  
+  .timeline-content {
+    flex: 1;
+  }
+  
+  .timeline-content .title {
+    font-weight: 600;
+    color: #1a1a2e;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  
+  .timeline-content .desc {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  /* Footer */
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .footer a {
+    color: #7C3AED;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /* Parent summary box */
+  .parent-box {
+    background: linear-gradient(135deg, #F8F7FF, #FFF7ED);
+    border: 1px solid #E5E0F7;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  
+  .parent-box h3 {
+    color: #7C3AED;
+    margin-top: 0;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .page { padding: 32px 40px; max-width: 100%; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">
+      <div class="brand-icon">&gt;_</div>
+      <div class="brand-text">
+        <span>Prompt</span><span>lings</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="path-badge">Explorers Path — Ages 8-10</div>
+      <div>Sample Lesson Plan</div>
+    </div>
+  </div>
+  
+  <!-- Title -->
+  <div class="title-block">
+    <div class="lesson-number">Week 1 of 6</div>
+    <h1>Meet Your AI Friend</h1>
+    <div class="subtitle">Students discover what AI is, practice asking questions, and learn the #1 safety rule.</div>
+  </div>
+  
+  <!-- Info Grid -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Duration</div>
+      <div class="value">45 min</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Group Size</div>
+      <div class="value">4-8</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Materials</div>
+      <div class="value">Browser</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Difficulty</div>
+      <div class="value">Beginner</div>
+    </div>
+  </div>
+  
+  <!-- Learning Objectives -->
+  <h2><span class="icon">🎯</span> Learning Objectives</h2>
+  <p>By the end of this lesson, your child will be able to:</p>
+  <ol>
+    <li>Explain what AI is in their own words</li>
+    <li>Name 2-3 AI assistants and what they do</li>
+    <li>Ask AI a question and evaluate the quality of the answer</li>
+    <li>Identify what personal information to never share with AI</li>
+  </ol>
+  
+  <!-- Lesson Flow -->
+  <h2><span class="icon">📋</span> Lesson Flow</h2>
+  
+  <div class="timeline-item">
+    <div class="time-badge">5 min</div>
+    <div class="timeline-content">
+      <div class="title">Warm-Up: "What Do You Think AI Is?"</div>
+      <div class="desc">Open discussion — students share what they know about AI. Most will mention Siri, Alexa, or robots. We meet them where they are.</div>
+    </div>
+  </div>
+  
+  <div class="timeline-item">
+    <div class="time-badge">15 min</div>
+    <div class="timeline-content">
+      <div class="title">Core Lesson: AI is a Tool, Not Magic</div>
+      <div class="desc">We explain AI with kid-friendly analogies ("a friend who read every book in every library"), demo a live AI conversation, and introduce the key idea: AI is helpful but not perfect.</div>
+    </div>
+  </div>
+  
+  <div class="timeline-item">
+    <div class="time-badge">15 min</div>
+    <div class="timeline-content">
+      <div class="title">Hands-On: The AI Question Game</div>
+      <div class="desc">Each student asks AI 5 questions (mix of fun and learning), then rates each answer. They discover firsthand that AI can be creative, helpful, and sometimes wrong.</div>
+    </div>
+  </div>
+  
+  <div class="timeline-item">
+    <div class="time-badge">5 min</div>
+    <div class="timeline-content">
+      <div class="title">Safety Lesson: Keep Your Secrets Safe</div>
+      <div class="desc">Interactive thumbs-up/down game teaching what's okay to share with AI (favorite color = yes, home address = no). One rule they'll never forget.</div>
+    </div>
+  </div>
+  
+  <div class="timeline-item">
+    <div class="time-badge">5 min</div>
+    <div class="timeline-content">
+      <div class="title">Wrap-Up + Take-Home Activity</div>
+      <div class="desc">Quick review, then homework: interview a family member about AI. Brings the conversation home and gets parents involved from day one.</div>
+    </div>
+  </div>
+  
+  <!-- Activity Spotlight -->
+  <div class="callout activity">
+    <strong>Activity Spotlight</strong>
+    <b>The AI Question Game</b> — Students ask AI questions like "If dinosaurs were alive today, what jobs would they have?" and "Why is the sky blue?" They rate each answer on a 3-star scale, building critical evaluation skills while having fun. Every student walks away having had a real conversation with AI.
+  </div>
+  
+  <!-- Safety -->
+  <div class="callout safety">
+    <strong>Safety First</strong>
+    Every Promptlings lesson includes an age-appropriate safety component. In Week 1, we establish the foundational rule: <b>never share personal information with AI</b> — including names, addresses, school names, or passwords. This rule is reinforced every session throughout the course.
+  </div>
+  
+  <!-- Parent Summary -->
+  <div class="parent-box">
+    <h3>What Your Child Takes Home</h3>
+    <ul>
+      <li><b>Understanding:</b> AI is a powerful tool — not magic, not scary, not perfect</li>
+      <li><b>Skill:</b> How to ask AI good questions and evaluate the answers</li>
+      <li><b>Safety:</b> What to never share with AI (and why)</li>
+      <li><b>Homework:</b> Interview a family member about AI — bringing the conversation home</li>
+    </ul>
+    <p style="margin-top: 12px; font-size: 13px; color: #666;">
+      <b>Next week:</b> Students create their first AI art and stories — turning from consumers into creators.
+    </p>
+  </div>
+  
+  <!-- CTA callout -->
+  <div class="callout">
+    <strong>Ready to enroll?</strong>
+    This is just Week 1 of a 6-week journey. The Explorers path takes students from "What is AI?" to building their own chatbot. Small groups (max 4:1 ratio), live instruction, and real projects every session.
+    <br><br>
+    <b>Join the waitlist at promptlings.ai</b>
+  </div>
+  
+  <!-- Footer -->
+  <div class="footer">
+    <div>&copy; 2026 Promptlings. All rights reserved.</div>
+    <div><a href="https://promptlings.ai">promptlings.ai</a></div>
+  </div>
+  
+</div>
+</body>
+</html>
