@@ -40,11 +40,11 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        {/* Logo — high-res PNG with transparent bg, plain img to skip Next.js optimization */}
+        {/* Logo — actual Promptlings logo, bg-removed, plain img to skip Next.js optimization */}
         <Link href="/" className="flex items-center no-underline mr-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/logos/logo-actual-transparent.png"
+            src="/img/logos/logo-1-nav-final.png"
             alt="Promptlings"
             className="h-8 md:h-10 w-auto"
           />
