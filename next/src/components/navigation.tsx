@@ -40,15 +40,13 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        {/* Logo — 36px desktop, 28px mobile */}
+        {/* Logo — SVG wordmark for crisp rendering at any size */}
         <Link href="/" className="flex items-center no-underline mr-8">
-          <Image
-            src="/img/logos/logo-1-nav.png"
-            alt="Promptlings — AI Literacy for Kids"
-            width={180}
-            height={98}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/logos/promptlings-wordmark.svg"
+            alt="Promptlings"
             className="h-7 md:h-9 w-auto"
-            priority
           />
         </Link>
 
