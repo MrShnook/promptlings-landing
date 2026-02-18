@@ -112,10 +112,11 @@ export function Hero() {
           <div
             className="w-full max-w-[440px] md:ml-auto p-6 rounded-2xl"
             style={{
-              background: "rgba(5, 2, 8, 0.6)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(167, 139, 250, 0.2)",
+              background: "rgba(5, 2, 8, 0.35)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(167, 139, 250, 0.25)",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
             }}
           >
             <h2
