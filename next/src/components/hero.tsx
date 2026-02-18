@@ -12,11 +12,20 @@ export function Hero() {
       }}
     >
       {/* Gradient scrim — dark left for text, fades right to show art */}
+      {/* Mobile: heavier overlay for readability; Desktop: original gradient */}
       <div
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none hidden md:block"
         style={{
           background:
             "linear-gradient(90deg, rgba(5,2,8,0.92) 0%, rgba(5,2,8,0.80) 25%, rgba(5,2,8,0.50) 50%, rgba(5,2,8,0.15) 75%, rgba(5,2,8,0.05) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none md:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(5,2,8,0.92) 0%, rgba(5,2,8,0.88) 40%, rgba(5,2,8,0.80) 70%, rgba(5,2,8,0.70) 100%)",
+          backgroundPosition: "30% center",
         }}
       />
 
@@ -46,7 +55,7 @@ export function Hero() {
 
           {/* Headline */}
           <h1
-            className="text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.1] mb-2"
+            className="text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.1] mb-2"
             style={{
               fontFamily: "var(--font-orbitron), sans-serif",
               color: "#ffffff",
@@ -55,9 +64,9 @@ export function Hero() {
             }}
           >
             <span className="block">
-              Your Kid Won&apos;t Just
+              The Future Runs
               <br />
-              Use AI.
+              on AI.
             </span>
             <span className="block mt-2">
               <span
@@ -69,7 +78,7 @@ export function Hero() {
                   filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))",
                 }}
               >
-                They&apos;ll Master It.
+                Your Child Will Be Ready.
               </span>
             </span>
           </h1>
@@ -103,8 +112,8 @@ export function Hero() {
             }}
           >
             <strong className="text-white">Promptlings</strong> teaches kids
-            ages 8–16+ to become AI creators through live, small-group classes.
-            Not passive screen time —{" "}
+            ages 8 to 18 to become AI creators through live, small-group
+            classes. Not passive screen time —{" "}
             <strong className="text-white">real skills</strong> for the future.
           </p>
 

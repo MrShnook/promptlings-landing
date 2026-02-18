@@ -40,14 +40,14 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center no-underline">
+        {/* Logo — 36px desktop, 28px mobile */}
+        <Link href="/" className="flex items-center no-underline mr-8">
           <Image
             src="/img/logos/logo-1-nav.webp"
             alt="Promptlings — AI Literacy for Kids"
             width={180}
             height={98}
-            className="h-9 w-auto"
+            className="h-7 md:h-9 w-auto"
             priority
           />
         </Link>
@@ -89,20 +89,20 @@ export function Navigation() {
             className="bg-navy-deep/95 backdrop-blur-[20px] border-glass-border"
           >
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-            <div className="flex flex-col gap-6 mt-8">
+            <div className="flex flex-col items-center gap-2 mt-12">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-cosmic-white text-lg font-medium hover:text-violet-glow transition-colors no-underline"
+                  className="text-cosmic-white text-lg font-medium hover:text-violet-glow transition-colors no-underline w-full text-center py-3 min-h-[44px] flex items-center justify-center"
                 >
                   {link.label}
                 </Link>
               ))}
               <Button
                 asChild
-                className="bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/30 shadow-[0_0_20px_rgba(124,58,237,0.3)] tracking-wider uppercase text-xs font-semibold mt-4"
+                className="bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/30 shadow-[0_0_20px_rgba(124,58,237,0.3)] tracking-wider uppercase text-xs font-semibold mt-4 w-full mx-6"
                 style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
               >
                 <Link href="/#waitlist" onClick={() => setOpen(false)}>

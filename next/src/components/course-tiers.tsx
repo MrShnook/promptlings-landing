@@ -3,55 +3,44 @@ import Image from "next/image";
 const tiers = [
   {
     name: "Explorers",
-    mascot: "★ Meet Pip",
-    ages: "Ages 8–10",
+    mascot: "Meet Pip",
+    ages: "Ages 8\u201310",
     grade: "Upper Elementary",
     color: "#34D399",
-    colorBg: "rgba(52, 211, 153, 0.15)",
-    emoji: "🔭",
     mascotImage: "/img/characters/pip-curious.webp",
     features: [
-      "What is AI? Friendly intro concepts",
-      "Prompt crafting through storytelling",
-      "AI art & creative projects",
-      "Digital safety fundamentals",
-      "End-of-course showcase project",
+      "Design your own AI chatbot buddy",
+      "Create art and stories with AI tools",
+      "Build a working story generator",
+      "Learn prompt crafting and creative thinking",
     ],
   },
   {
     name: "Builders",
-    mascot: "⚡ Meet Giga",
-    ages: "Ages 11–13",
+    mascot: "Meet Giga",
+    ages: "Ages 11\u201313",
     grade: "Middle School",
     color: "#7C3AED",
-    colorBg: "rgba(124, 58, 237, 0.15)",
-    emoji: "🤖",
     mascotImage: "/img/characters/giga-confident.webp",
     features: [
-      "Hands-on prompt engineering",
-      "Build chatbots & AI tools",
-      "Intro to Python + AI APIs",
-      "Ethics & bias in AI systems",
-      "Team project: ship a real app",
-      "Industry guest speakers",
+      "Code a real web app from scratch",
+      "Train your own mini AI model",
+      "Automate everyday tasks with AI",
+      "Develop Python basics and data thinking",
     ],
   },
   {
     name: "Creators",
-    mascot: "🚀 Meet Nova",
-    ages: "Ages 14+",
+    mascot: "Meet Nova",
+    ages: "Ages 14\u201318",
     grade: "High School",
     color: "#FF6B6B",
-    colorBg: "rgba(255, 107, 107, 0.15)",
-    emoji: "💫",
     mascotImage: "/img/characters/nova-creating.webp",
     features: [
-      "Advanced prompt architecture",
-      "Full-stack AI app development",
-      "Fine-tuning & custom models",
-      "AI entrepreneurship & ethics",
-      "Portfolio-ready capstone project",
-      "College application boost",
+      "Ship a portfolio-ready project",
+      "Build with real APIs and developer tools",
+      "Present your work to an expert panel",
+      "Master full-stack development and AI integration",
     ],
   },
 ];
@@ -72,7 +61,7 @@ export function CourseTiers() {
             className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold leading-tight mb-5"
             style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
           >
-            Three Tracks. One{" "}
+            Three Paths. One{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #9F67FF, #C4B5FD)",
@@ -86,23 +75,22 @@ export function CourseTiers() {
             .
           </h2>
           <p className="text-white-dim text-lg max-w-[600px] mx-auto leading-relaxed">
-            Every track is led by a mascot guide. Pick the one that matches your
-            kid&apos;s age and watch them level up.
+            Pick the path that matches your child&apos;s age and watch them
+            level up.
           </p>
         </div>
 
-        {/* Cards — no standalone mascot row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards — equal height via grid stretch */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className="relative overflow-hidden transition-all duration-400 hover:-translate-y-2 group rounded-2xl p-8"
+              className="relative overflow-hidden transition-all duration-400 hover:-translate-y-2 group rounded-2xl p-8 flex flex-col"
               style={{
                 background: "rgba(15, 10, 30, 0.4)",
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
                 border: "1px solid rgba(255, 255, 255, 0.08)",
-                ["--tier-color" as string]: tier.color,
               }}
             >
               {/* Gradient top border */}
@@ -119,11 +107,11 @@ export function CourseTiers() {
                 }}
               />
 
-              {/* Mascot — transparent, no colored box */}
+              {/* Mascot */}
               <div className="w-20 h-20 mb-5 relative z-[1]">
                 <Image
                   src={tier.mascotImage}
-                  alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} — the ${tier.name} mascot guide`}
+                  alt={`${tier.mascot.replace("Meet ", "")} — the ${tier.name} mascot guide`}
                   width={80}
                   height={80}
                   className="object-contain"
@@ -151,7 +139,7 @@ export function CourseTiers() {
                 {tier.ages} · {tier.grade}
               </p>
 
-              <ul className="list-none mb-8 relative z-[1] space-y-2">
+              <ul className="list-none mb-8 relative z-[1] space-y-2 flex-1">
                 {tier.features.map((feature) => (
                   <li
                     key={feature}
@@ -161,7 +149,7 @@ export function CourseTiers() {
                       className="text-[0.7rem] mt-1 shrink-0"
                       style={{ color: tier.color }}
                     >
-                      ✦
+                      &#10022;
                     </span>
                     {feature}
                   </li>
@@ -170,7 +158,7 @@ export function CourseTiers() {
 
               <a
                 href="#waitlist"
-                className="block w-full py-3.5 text-center rounded-xl text-sm font-semibold tracking-wider uppercase transition-all border relative z-[1]"
+                className="block w-full py-3.5 text-center rounded-xl text-sm font-semibold tracking-wider uppercase transition-all border relative z-[1] mt-auto"
                 style={{
                   fontFamily: "var(--font-orbitron), sans-serif",
                   borderColor: tier.color,
