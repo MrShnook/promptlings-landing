@@ -44,8 +44,9 @@ export function Footer() {
           <div className="flex items-center">
             <Link href="/">
               {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/img/logos/promptlings-wordmark.svg"
+                src="/img/logos/logo-actual-transparent.png"
                 alt="Promptlings"
                 className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
               />

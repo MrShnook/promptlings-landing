@@ -40,13 +40,13 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        {/* Logo — SVG wordmark for crisp rendering at any size */}
+        {/* Logo — high-res PNG with transparent bg, plain img to skip Next.js optimization */}
         <Link href="/" className="flex items-center no-underline mr-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/img/logos/promptlings-wordmark.svg"
+            src="/img/logos/logo-actual-transparent.png"
             alt="Promptlings"
-            className="h-7 md:h-9 w-auto"
+            className="h-8 md:h-10 w-auto"
           />
         </Link>
 
