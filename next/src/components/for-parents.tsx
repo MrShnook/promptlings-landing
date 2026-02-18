@@ -1,4 +1,4 @@
-import { Eye, Radio, Users, ShieldCheck, BookOpen } from "lucide-react";
+import { Eye, Radio, Users, ShieldCheck, BookOpen, BadgeCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const parentPoints: { icon: LucideIcon; title: string; description: string }[] = [
@@ -26,6 +26,11 @@ const parentPoints: { icon: LucideIcon; title: string; description: string }[] =
     icon: BookOpen,
     title: "Take-Home Resources",
     description: "Activity guides and practice materials after each session to keep the learning going.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Money-Back Guarantee",
+    description: "Not the right fit? Full refund within the first two sessions, no questions asked.",
   },
 ];
 
