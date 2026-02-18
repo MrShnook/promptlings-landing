@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+const KIT_API_KEY = process.env.KIT_API_KEY;
+const KIT_TAG_ID = "16164171"; // "waitlist" tag
+
 export async function POST(request: Request) {
   try {
     const { email, age } = await request.json();
@@ -11,47 +14,60 @@ export async function POST(request: Request) {
       );
     }
 
-    const KIT_API_KEY = process.env.KIT_API_KEY;
-    const KIT_FORM_ID = process.env.KIT_FORM_ID;
-
-    if (!KIT_API_KEY || !KIT_FORM_ID) {
-      console.error("Missing KIT_API_KEY or KIT_FORM_ID env vars");
+    if (!KIT_API_KEY) {
+      console.error("Missing KIT_API_KEY env var");
       return NextResponse.json(
         { error: "Waitlist configuration error" },
         { status: 500 }
       );
     }
 
-    // Subscribe to Kit form
-    const response = await fetch(
-      `https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          api_key: KIT_API_KEY,
-          email,
-          fields: {
-            child_age_range: age || "not specified",
-          },
-        }),
-      }
-    );
+    // 1. Create/update subscriber with age range custom field
+    const subResponse = await fetch("https://api.kit.com/v4/subscribers", {
+      method: "POST",
+      headers: {
+        "X-Kit-Api-Key": KIT_API_KEY,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email_address: email,
+        fields: {
+          child_age_range: age || "not specified",
+        },
+      }),
+    });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error("Kit API error:", response.status, errorData);
+    if (!subResponse.ok) {
+      const errorData = await subResponse.json().catch(() => ({}));
+      console.error("Kit subscriber API error:", subResponse.status, errorData);
       return NextResponse.json(
         { error: "Failed to join waitlist" },
         { status: 502 }
       );
     }
 
-    const data = await response.json();
+    const subData = await subResponse.json();
+    const subscriberId = subData.subscriber?.id;
+
+    // 2. Tag subscriber as "waitlist"
+    if (subscriberId) {
+      await fetch(`https://api.kit.com/v4/tags/${KIT_TAG_ID}/subscribers`, {
+        method: "POST",
+        headers: {
+          "X-Kit-Api-Key": KIT_API_KEY,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email_address: email,
+        }),
+      }).catch((err) => console.error("Kit tag error:", err));
+    }
 
     return NextResponse.json({
       success: true,
-      subscriber_id: data.subscription?.subscriber?.id,
+      subscriber_id: subscriberId,
     });
   } catch (error) {
     console.error("Waitlist API error:", error);
