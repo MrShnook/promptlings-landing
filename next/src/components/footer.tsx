@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Instagram, Youtube, Linkedin } from "lucide-react";
 
 const pageLinks = [
   { href: "/#programs", label: "Programs" },
@@ -8,12 +9,30 @@ const pageLinks = [
   { href: "/blog", label: "Blog" },
 ];
 
+const legalLinks = [
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/refund", label: "Refund Policy" },
+];
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.16z" />
+    </svg>
+  );
+}
+
 const socialLinks = [
-  { label: "Facebook", icon: "📘" },
-  { label: "Instagram", icon: "📷" },
-  { label: "TikTok", icon: "🎵" },
-  { label: "YouTube", icon: "▶️" },
-  { label: "LinkedIn", icon: "💼" },
+  { label: "Instagram", icon: Instagram, href: "#" },
+  { label: "YouTube", icon: Youtube, href: "#" },
+  { label: "LinkedIn", icon: Linkedin, href: "#" },
+  { label: "TikTok", icon: TikTokIcon, href: "#" },
 ];
 
 export function Footer() {
@@ -25,11 +44,11 @@ export function Footer() {
           <div className="flex items-center">
             <Link href="/">
               <Image
-                src="/img/logo-1.webp"
-                alt="Promptlings — AI Literacy for Kids"
+                src="/img/logos/logo-1-nav.webp"
+                alt="Promptlings"
                 width={140}
                 height={76}
-                className="h-7 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
               />
             </Link>
           </div>
@@ -55,23 +74,40 @@ export function Footer() {
 
           {/* Social icons */}
           <div className="flex gap-3">
-            {socialLinks.map((social) => (
-              <button
-                key={social.label}
-                className="w-9 h-9 rounded-full bg-navy/50 border border-glass-border flex items-center justify-center text-sm hover:border-violet-glow/50 hover:bg-violet/10 transition-all"
-                aria-label={social.label}
-                title={social.label}
-              >
-                {social.icon}
-              </button>
-            ))}
+            {socialLinks.map((social) => {
+              const IconComponent = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="w-9 h-9 rounded-full bg-navy/50 border border-glass-border flex items-center justify-center hover:border-violet-glow/50 hover:bg-violet/10 transition-all"
+                  aria-label={social.label}
+                  title={social.label}
+                >
+                  <IconComponent className="w-4 h-4 text-white-dim" />
+                </a>
+              );
+            })}
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-violet/10 text-center">
+        {/* Legal links + Copyright */}
+        <div className="mt-8 pt-6 border-t border-violet/10 flex flex-col items-center gap-3">
+          <nav className="flex flex-wrap justify-center gap-1 text-white-dim/50 text-xs">
+            {legalLinks.map((link, i) => (
+              <span key={link.href} className="flex items-center gap-1">
+                {i > 0 && <span className="mx-1.5">|</span>}
+                <Link
+                  href={link.href}
+                  className="hover:text-violet-glow transition-colors no-underline"
+                >
+                  {link.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
           <p className="text-white-dim/60 text-xs">
-            © {new Date().getFullYear()} Promptlings. All rights reserved.
+            &copy; {new Date().getFullYear()} Promptlings. All rights reserved.
           </p>
         </div>
       </div>

@@ -40,10 +40,8 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex gap-3 ${
-        variant === "stacked"
-          ? "flex-col max-w-md mx-auto"
-          : "flex-col sm:flex-row flex-wrap"
+      className={`flex flex-col gap-3 ${
+        variant === "stacked" ? "max-w-md mx-auto" : "max-w-[480px]"
       }`}
     >
       <Input
@@ -54,7 +52,7 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
         onChange={(e) => setEmail(e.target.value)}
         className="w-full h-12 px-5 bg-navy-deep/60 border-violet/30 rounded-xl text-cosmic-white placeholder:text-white-dim/50 focus:border-violet-glow focus:ring-violet-glow/20 text-base"
       />
-      <div className="relative w-full sm:w-auto">
+      <div className="relative w-full">
         <select
           value={age}
           onChange={(e) => setAge(e.target.value)}
@@ -77,7 +75,7 @@ export function WaitlistForm({ variant = "inline" }: WaitlistFormProps) {
       </div>
       <Button
         type="submit"
-        className="w-full sm:w-auto h-12 bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/40 shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all px-8 tracking-widest uppercase text-sm font-bold whitespace-nowrap"
+        className="w-full h-12 bg-gradient-to-br from-violet to-[#5B21B6] text-white border border-violet-glow/40 shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all px-8 tracking-widest uppercase text-sm font-bold whitespace-nowrap"
         style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
       >
         Join Waitlist <span className="ml-2">&rarr;</span>

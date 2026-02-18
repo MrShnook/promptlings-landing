@@ -1,23 +1,31 @@
-const parentPoints = [
+import { Eye, Radio, Users, ShieldCheck, BookOpen } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const parentPoints: { icon: LucideIcon; title: string; description: string }[] = [
   {
-    icon: "🔍",
-    title: "Full Transparency",
-    description: "See what your kid is building. We share lesson plans and project updates.",
+    icon: Eye,
+    title: "Full Lesson Transparency",
+    description: "Parents receive complete lesson plans so you always know what your child is learning.",
   },
   {
-    icon: "📊",
-    title: "Progress Reports",
-    description: "Regular updates on your child's growth and skills development.",
+    icon: Radio,
+    title: "Live Instruction",
+    description: "Every class is led by a real instructor, not AI. Your child gets human guidance and feedback.",
   },
   {
-    icon: "🤝",
-    title: "Parent Community",
-    description: "Connect with other forward-thinking families navigating AI education.",
+    icon: Users,
+    title: "Small Groups",
+    description: "Maximum 4:1 student-to-instructor ratio so every child gets personal attention.",
   },
   {
-    icon: "📚",
-    title: "Home Resources",
-    description: "Take-home activities and conversation guides to keep the learning going.",
+    icon: ShieldCheck,
+    title: "Vetted Tools",
+    description: "Every AI tool is reviewed for age-appropriateness before it enters the classroom.",
+  },
+  {
+    icon: BookOpen,
+    title: "Take-Home Resources",
+    description: "Activity guides and practice materials after each session to keep the learning going.",
   },
 ];
 
@@ -54,24 +62,29 @@ export function ForParents() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-[800px] mx-auto">
-          {parentPoints.map((point) => (
-            <div
-              key={point.title}
-              className="glass-card p-6 hover:-translate-y-1 transition-transform duration-300"
-            >
-              <div className="text-3xl mb-4">{point.icon}</div>
-              <h3
-                className="text-cosmic-white font-semibold text-sm tracking-wide mb-2"
-                style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[900px] mx-auto">
+          {parentPoints.map((point) => {
+            const IconComponent = point.icon;
+            return (
+              <div
+                key={point.title}
+                className="glass-card p-6 hover:-translate-y-1 transition-transform duration-300"
               >
-                {point.title}
-              </h3>
-              <p className="text-white-dim text-sm leading-relaxed">
-                {point.description}
-              </p>
-            </div>
-          ))}
+                <div className="w-10 h-10 rounded-xl bg-mint/10 border border-mint/20 flex items-center justify-center mb-4">
+                  <IconComponent className="w-5 h-5 text-mint" />
+                </div>
+                <h3
+                  className="text-cosmic-white font-semibold text-sm tracking-wide mb-2"
+                  style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
+                >
+                  {point.title}
+                </h3>
+                <p className="text-white-dim text-sm leading-relaxed">
+                  {point.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About — Promptlings",
   description:
-    "Learn about the Promptlings mission: AI literacy for every kid. Meet our founder and instructor, Matt Martin.",
+    "Learn about the Promptlings mission: AI literacy for every child. Meet our founder and instructor, Matt Martin.",
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-white-dim text-lg max-w-[700px] mx-auto leading-relaxed">
             Promptlings exists to close the AI literacy gap. We believe every
-            kid deserves to understand and direct the technology that will shape
+            child deserves to understand and direct the technology that will shape
             their future — not just passively use it.
           </p>
         </div>
@@ -116,7 +116,9 @@ export default function AboutPage() {
                 />
                 <div className="relative w-[320px] aspect-square rounded-3xl overflow-hidden border border-glass-border bg-gradient-to-br from-navy to-violet/20 flex items-center justify-center">
                   <div className="text-center p-8">
-                    <div className="text-6xl mb-4">👨‍💻</div>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-violet/20 border border-violet/40 flex items-center justify-center">
+                      <span className="text-2xl text-violet-glow" aria-hidden="true">&#10022;</span>
+                    </div>
                     <p
                       className="text-violet-glow text-sm font-semibold tracking-wider uppercase"
                       style={{
@@ -197,7 +199,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-6 text-white-dim text-lg leading-relaxed">
             <div className="glass-card p-6 flex items-start gap-4">
-              <span className="text-2xl">💡</span>
+              <span className="text-2xl text-violet-glow" aria-hidden="true">&#10022;</span>
               <div>
                 <h3
                   className="text-cosmic-white font-semibold text-sm mb-2"
@@ -213,7 +215,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="glass-card p-6 flex items-start gap-4">
-              <span className="text-2xl">🔬</span>
+              <span className="text-2xl text-coral" aria-hidden="true">&#10038;</span>
               <div>
                 <h3
                   className="text-cosmic-white font-semibold text-sm mb-2"
@@ -229,7 +231,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="glass-card p-6 flex items-start gap-4">
-              <span className="text-2xl">🚀</span>
+              <span className="text-2xl text-mint" aria-hidden="true">&#10148;</span>
               <div>
                 <h3
                   className="text-cosmic-white font-semibold text-sm mb-2"
@@ -238,8 +240,8 @@ export default function AboutPage() {
                   The Launch
                 </h3>
                 <p>
-                  Promptlings is launching Spring 2026 with three tracks
-                  designed for ages 8–16+. Small groups, live instruction, real
+                  Promptlings is launching Spring 2026 with three paths
+                  designed for ages 8–18. Small groups, live instruction, real
                   projects. The future of AI education starts here.
                 </p>
               </div>

@@ -38,8 +38,8 @@ export function MidPageCta() {
             </span>
           </h2>
           <p className="text-white-dim text-lg mb-8 leading-relaxed relative">
-            Spring 2026 cohorts are filling fast. Secure your kid&apos;s spot on
-            the waitlist.
+            Spring 2026 cohorts are filling fast. Secure your child&apos;s spot
+            on the waitlist.
           </p>
 
           <div className="relative">

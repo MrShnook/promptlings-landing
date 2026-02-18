@@ -1,5 +1,5 @@
 import { Hero } from "@/components/hero";
-import { TrustSignals } from "@/components/trust-signals";
+
 import { WhatIsPromptlings } from "@/components/what-is-promptlings";
 import { CourseTiers } from "@/components/course-tiers";
 import { HowItWorks } from "@/components/how-it-works";
@@ -14,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustSignals />
       <SectionDivider />
       <WhatIsPromptlings />
       <SectionDivider />

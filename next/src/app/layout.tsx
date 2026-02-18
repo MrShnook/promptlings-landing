@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://promptlings.ai"),
   title: "Promptlings — AI Literacy for Kids",
   description:
-    "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers. Live classes, small groups, safety-first. Join the waitlist.",
+    "Promptlings teaches kids ages 8-18 to be AI creators, not just consumers. Live classes, small groups, safety-first. Join the waitlist.",
   openGraph: {
     title: "Promptlings — AI Literacy for Kids",
     description:
-      "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers. Live classes, small groups, safety-first.",
+      "Promptlings teaches kids ages 8-18 to be AI creators, not just consumers. Live classes, small groups, safety-first.",
     type: "website",
     url: "https://promptlings.ai",
     siteName: "Promptlings",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Promptlings — AI Literacy for Kids",
     description:
-      "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers.",
+      "Promptlings teaches kids ages 8-18 to be AI creators, not just consumers.",
     images: ["/img/og-image.jpg"],
   },
   icons: {

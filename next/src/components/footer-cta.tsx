@@ -25,8 +25,7 @@ export function FooterCta() {
             className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-4 relative"
             style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
           >
-            Ready to Launch Your Kid&apos;s
-            <br />
+            Ready to Launch Your Child&apos;s{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #9F67FF, #C4B5FD)",
@@ -40,8 +39,7 @@ export function FooterCta() {
             ?
           </h2>
           <p className="text-white-dim text-lg mb-9 leading-relaxed relative">
-            Spring 2026 cohorts are filling fast. Join the waitlist and be the
-            first to know when enrollment opens. Early birds get 15% off.
+            Join the waitlist for early access and founding member pricing.
           </p>
 
           <div className="relative">

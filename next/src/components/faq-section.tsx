@@ -13,15 +13,15 @@ const faqData = [
     items: [
       {
         q: "Is this safe for my child? What AI tools will they use?",
-        a: "Curated, age-appropriate tools. No unsupervised access to raw LLMs. Guardrails and instructor oversight at every step. We use sandboxed AI environments designed specifically for young learners.",
+        a: "Every AI tool used in class is vetted for age-appropriateness before it enters the classroom. Students never have unsupervised access to raw language models. All sessions are instructor-led with guardrails in place, and we use sandboxed environments designed specifically for young learners. Your child's safety is our top priority.",
       },
       {
         q: "Will my child's data be collected or used to train AI?",
-        a: "No student data collection. Privacy-first approach. Clear data policy. We never share, sell, or use student data for any purpose beyond delivering the course.",
+        a: "We collect only what's necessary: parent email, child's first name, and age range. We never share, sell, or use student data for any purpose beyond delivering the course. We do not collect data directly from children under 13 without parental consent, in compliance with COPPA. See our privacy policy for full details.",
       },
       {
-        q: "Does my child need prior coding experience?",
-        a: "No. Explorers is designed for complete beginners. Each tier builds progressively. Builders assumes some comfort with computers but no coding required. Creators is our advanced track — some programming experience helps but isn't mandatory.",
+        q: "What if my child has zero experience with AI?",
+        a: "That's exactly who we built this for. Our Explorer path is designed for complete beginners. Your child will start with the basics — how to talk to AI, how to evaluate its responses, and how to use it creatively. No coding experience needed. Just curiosity.",
       },
     ],
   },
@@ -29,20 +29,20 @@ const faqData = [
     category: "Logistics",
     items: [
       {
+        q: "Who teaches the classes?",
+        a: "Every class is taught by Matt Martin, Promptlings' founder and an experienced AI professional. This isn't a marketplace of random tutors — it's one instructor who knows every student by name. Matt brings real-world AI experience from the enterprise space, translated into projects kids actually care about.",
+      },
+      {
         q: "How are classes structured?",
-        a: "Live instructor-led, small cohorts (max 8-10 students), project-based learning. Not pre-recorded videos. Every session has hands-on building time with direct instructor feedback.",
+        a: "Classes are live, instructor-led, and project-based with small cohorts of 4-8 students. This is not pre-recorded content. Every session includes hands-on building time with direct instructor feedback. Students work on real projects they can show off when they're done.",
       },
       {
-        q: "What ages/grades are each course for?",
-        a: "Explorers (ages 8-10, Upper Elementary), Builders (ages 11-13, Middle School), Creators (ages 14+, High School). We match students to the right cohort based on both age and experience.",
+        q: "What ages/grades are each path for?",
+        a: "Explorers is for ages 8-10 (Upper Elementary), Builders is for ages 11-13 (Middle School), and Creators is for ages 14-18 (High School). We match students to the right cohort based on both age and experience level to make sure everyone feels challenged but not overwhelmed.",
       },
       {
-        q: "How long is each course?",
-        a: "Session details are being finalized for Spring 2026. Contact us at hello@promptlings.ai for the current schedule and availability.",
-      },
-      {
-        q: "What does my child need?",
-        a: "A laptop or tablet, internet connection, and a modern web browser (Chrome, Firefox, or Safari). No expensive software required — we provide access to all the tools used in class.",
+        q: "What does my child need to participate?",
+        a: "A laptop or tablet, an internet connection, and a modern web browser (Chrome, Firefox, or Safari). No expensive software or downloads required — we provide access to all the AI tools used in class. Everything runs in the browser.",
       },
     ],
   },
@@ -51,15 +51,15 @@ const faqData = [
     items: [
       {
         q: "What will my child actually learn?",
-        a: "Explorers: create stories and art with AI, learn prompt crafting. Builders: build functional chatbots and AI tools, intro to Python. Creators: ship portfolio-worthy projects, full-stack AI app development.",
+        a: "Explorers (ages 8-10): Your child will learn to talk to AI using prompt engineering, create art and stories with AI tools, and build their first working project — a chatbot or story generator they design themselves.\n\nBuilders (ages 11-13): Students dive into coding with Python, build real web applications, and learn to train simple AI models. They'll automate tasks and develop computational thinking skills.\n\nCreators (ages 14-18): Advanced students build portfolio-ready projects using real developer tools and APIs. They'll present their work to expert panels and develop skills directly applicable to college and careers.",
       },
       {
-        q: "How is this different from other coding classes?",
-        a: "We teach kids to build WITH AI, not just learn about it. Our curriculum is project-based, creative, and hands-on. Every session ends with something your child made and can share. We're practitioners who build AI systems professionally, not just educators.",
+        q: "What tools do you use?",
+        a: "We use industry-standard AI tools including ChatGPT, Claude, and creative AI platforms — the same tools professionals use daily. Every tool is vetted for age-appropriateness and used in a supervised, instructor-led environment. No downloads required — everything runs in the browser.",
       },
       {
         q: "Is there a refund policy?",
-        a: "Yes — satisfaction guarantee. Full refund within the first two sessions, no questions asked. After that, we offer a prorated refund. Contact us at hello@promptlings.ai for details.",
+        a: "Yes. Full refund if you cancel 48 or more hours before the first class. After that, we offer a pro-rated refund for any unused sessions. No refund for sessions already completed. Contact hello@promptlings.ai to request a refund. See our full refund policy for details.",
       },
     ],
   },
@@ -118,7 +118,7 @@ export function FaqSection() {
                     <AccordionTrigger className="px-7 py-5 text-left text-cosmic-white font-semibold hover:text-violet-glow transition-colors [&>svg]:text-violet-glow hover:no-underline">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="px-7 pb-6 text-white-dim text-[0.95rem] leading-relaxed">
+                    <AccordionContent className="px-7 pb-6 text-white-dim text-[0.95rem] leading-relaxed whitespace-pre-line">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
