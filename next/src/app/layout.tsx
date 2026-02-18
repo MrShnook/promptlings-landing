@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Promptlings",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/img/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Promptlings — AI Literacy for Kids",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "Promptlings — AI Literacy for Kids",
     description:
       "Promptlings teaches kids ages 8-16+ to be AI creators, not just consumers.",
-    images: ["/og-image.jpg"],
+    images: ["/img/og-image.jpg"],
   },
   icons: {
     icon: [

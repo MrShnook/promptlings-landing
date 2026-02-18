@@ -9,7 +9,7 @@ const tiers = [
     color: "#34D399",
     colorBg: "rgba(52, 211, 153, 0.15)",
     emoji: "🔭",
-    mascotImage: "/img/pip.webp",
+    mascotImage: "/img/characters/pip-curious.webp",
     features: [
       "What is AI? Friendly intro concepts",
       "Prompt crafting through storytelling",
@@ -26,8 +26,7 @@ const tiers = [
     color: "#7C3AED",
     colorBg: "rgba(124, 58, 237, 0.15)",
     emoji: "🤖",
-    mascotImage: "/img/giga.webp",
-    featured: true,
+    mascotImage: "/img/characters/giga-confident.webp",
     features: [
       "Hands-on prompt engineering",
       "Build chatbots & AI tools",
@@ -45,7 +44,7 @@ const tiers = [
     color: "#FF6B6B",
     colorBg: "rgba(255, 107, 107, 0.15)",
     emoji: "💫",
-    mascotImage: "/img/nova.webp",
+    mascotImage: "/img/characters/nova-creating.webp",
     features: [
       "Advanced prompt architecture",
       "Full-stack AI app development",
@@ -92,56 +91,21 @@ export function CourseTiers() {
           </p>
         </div>
 
-        {/* Mascots */}
-        <div className="flex justify-center mb-12">
-          <div
-            className="flex items-end justify-center gap-6 w-full max-w-[600px]"
-            style={{ animation: "float 8s ease-in-out infinite" }}
-          >
-            {tiers.map((tier) => (
-              <div key={tier.name} className="flex flex-col items-center">
-                <div
-                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-glass-border"
-                  style={{ background: tier.colorBg }}
-                >
-                  <Image
-                    src={tier.mascotImage}
-                    alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} — the ${tier.name} mascot guide`}
-                    fill
-                    className="object-contain p-2"
-                    sizes="(max-width: 768px) 112px, 144px"
-                  />
-                </div>
-                <p
-                  className="text-white-dim text-[0.65rem] tracking-wider uppercase mt-2"
-                  style={{
-                    fontFamily: "var(--font-jetbrains-mono), monospace",
-                  }}
-                >
-                  {tier.mascot.replace(/[★⚡🚀] /, "")}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Cards */}
+        {/* Cards — no standalone mascot row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`glass-card p-8 relative overflow-hidden transition-all duration-400 hover:-translate-y-2 group ${
-                tier.featured
-                  ? "border-violet/40 bg-navy/60"
-                  : ""
-              }`}
-              style={
-                {
-                  "--tier-color": tier.color,
-                } as React.CSSProperties
-              }
+              className="relative overflow-hidden transition-all duration-400 hover:-translate-y-2 group rounded-2xl p-8"
+              style={{
+                background: "rgba(15, 10, 30, 0.4)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                ["--tier-color" as string]: tier.color,
+              }}
             >
-              {/* Top accent line */}
+              {/* Gradient top border */}
               <div
                 className="absolute top-0 left-0 right-0 h-[3px] opacity-70"
                 style={{ background: tier.color }}
@@ -155,27 +119,13 @@ export function CourseTiers() {
                 }}
               />
 
-              {tier.featured && (
-                <div
-                  className="absolute top-4 right-4 px-3 py-1 bg-coral text-white rounded-md text-[0.65rem] font-semibold tracking-wider uppercase"
-                  style={{
-                    fontFamily: "var(--font-jetbrains-mono), monospace",
-                  }}
-                >
-                  Most Popular
-                </div>
-              )}
-
-              {/* Mascot icon */}
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 relative z-[1] overflow-hidden"
-                style={{ background: tier.colorBg }}
-              >
+              {/* Mascot — transparent, no colored box */}
+              <div className="w-20 h-20 mb-5 relative z-[1]">
                 <Image
                   src={tier.mascotImage}
-                  alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} mascot icon`}
-                  width={56}
-                  height={56}
+                  alt={`${tier.mascot.replace(/[★⚡🚀] /, "")} — the ${tier.name} mascot guide`}
+                  width={80}
+                  height={80}
                   className="object-contain"
                 />
               </div>
@@ -224,11 +174,11 @@ export function CourseTiers() {
                 style={{
                   fontFamily: "var(--font-orbitron), sans-serif",
                   borderColor: tier.color,
-                  color: tier.featured ? "white" : tier.color,
-                  background: tier.featured ? tier.color : "transparent",
+                  color: tier.color,
+                  background: "transparent",
                 }}
               >
-                Enroll {tier.name.replace("s", "")}
+                Enroll {tier.name.replace(/s$/, "")}
               </a>
             </div>
           ))}

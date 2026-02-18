@@ -43,7 +43,7 @@ export function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center no-underline">
           <Image
-            src="/img/logo-1.webp"
+            src="/img/logos/logo-1-nav.webp"
             alt="Promptlings — AI Literacy for Kids"
             width={180}
             height={98}
