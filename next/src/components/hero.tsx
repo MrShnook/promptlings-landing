@@ -55,32 +55,20 @@ export function Hero() {
 
           {/* Headline */}
           <h1
-            className="text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.1] mb-2"
+            className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.1] mb-2"
             style={{
               fontFamily: "var(--font-orbitron), sans-serif",
               color: "#ffffff",
               textShadow:
                 "0 2px 20px rgba(0,0,0,0.6), 0 0 60px rgba(100,50,180,0.2)",
+              background: "linear-gradient(135deg, #ffffff 40%, #f9a8d4 70%, #fbbf24 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))",
             }}
           >
-            <span className="block">
-              The Future Runs
-              <br />
-              on AI.
-            </span>
-            <span className="block mt-2">
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #f9a8d4, #fbbf24)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.4))",
-                }}
-              >
-                Your Child Will Be Ready.
-              </span>
-            </span>
+            Your child&apos;s AI journey starts here.
           </h1>
 
           {/* Typing tagline */}
