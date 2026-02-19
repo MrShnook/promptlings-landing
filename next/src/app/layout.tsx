@@ -5,6 +5,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Starfield } from "@/components/starfield";
 import { PostHogProvider } from "@/components/posthog-provider";
+import { SpringBreakBanner } from "@/components/spring-break-banner";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -79,6 +80,7 @@ export default function RootLayout({
           <div className="fixed w-[600px] h-[600px] rounded-full bg-violet blur-[120px] opacity-12 pointer-events-none z-0 -top-[10%] -right-[10%]" />
           <div className="fixed w-[500px] h-[500px] rounded-full bg-coral blur-[120px] opacity-12 pointer-events-none z-0 bottom-[20%] -left-[15%]" />
           <div className="fixed w-[400px] h-[400px] rounded-full bg-mint blur-[120px] opacity-7 pointer-events-none z-0 top-[50%] right-[20%]" />
+          <SpringBreakBanner />
           <Navigation />
           <main className="relative z-2">{children}</main>
           <Footer />
