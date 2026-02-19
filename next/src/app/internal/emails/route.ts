@@ -18,6 +18,8 @@ export async function GET(request: NextRequest) {
     "email-3-activity",
     "email-4-safety",
     "email-5-earlybird",
+    "blast-spring-break-announcement",
+    "blast-spring-break-lastchance",
     "preview",
   ];
 
